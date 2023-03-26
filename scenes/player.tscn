@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://im0eju43g3gx"]
+
+[ext_resource type="Texture2D" uid="uid://dq3x7ttmjamdc" path="res://assets/snakes/default/face.png" id="1_gkbog"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_s6y0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvfg1"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s6y0d")
+
+[node name="Face" type="Sprite2D" parent="."]
+texture = ExtResource("1_gkbog")
+
+[node name="FaceHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hvfg1")
+
+[node name="Tail" type="Node2D" parent="."]
