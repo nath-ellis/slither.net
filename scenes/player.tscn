@@ -14,5 +14,3 @@ texture = ExtResource("1_gkbog")
 
 [node name="FaceHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hvfg1")
-
-[node name="Tail" type="Node2D" parent="."]
