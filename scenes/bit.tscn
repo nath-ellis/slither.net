@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddmc76uee3cyg"]
+
+[ext_resource type="Texture2D" uid="uid://dvfsv7y2rfrd3" path="res://assets/bits/white.png" id="1_riyad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b765a"]
+size = Vector2(8, 8)
+
+[node name="Bit" type="CharacterBody2D"]
+metadata/bit = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_riyad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b765a")

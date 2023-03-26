@@ -24,4 +24,11 @@ func _physics_process(delta) -> void:
 		vel = Vector2(speed, 0)
 		face.rotation_degrees = 90
 	
-	move_and_collide(vel * delta)
+	var col = move_and_collide(vel * delta)
+	
+	if col != null:
+		var collider = col.get_collider()
+		
+		if collider.has_meta("bit") and collider.get_meta("bit"):
+			Manager.increase_length()
+			collider.queue_free()
