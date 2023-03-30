@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddmc76uee3cyg"]
+[gd_scene load_steps=4 format=3 uid="uid://ddmc76uee3cyg"]
 
+[ext_resource type="Script" path="res://scripts/bit.gd" id="1_45i5n"]
 [ext_resource type="Texture2D" uid="uid://dvfsv7y2rfrd3" path="res://assets/bits/white.png" id="1_riyad"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b765a"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq1wb"]
 size = Vector2(8, 8)
 
-[node name="Bit" type="CharacterBody2D"]
-metadata/bit = true
+[node name="Bit" type="Area2D"]
+script = ExtResource("1_45i5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_riyad")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_b765a")
+shape = SubResource("RectangleShape2D_eq1wb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

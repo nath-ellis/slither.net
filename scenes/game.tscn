@@ -6,7 +6,22 @@
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ypwkn")]
-position = Vector2(272, 279)
+position = Vector2(128, 128)
 
-[node name="Bit" parent="." instance=ExtResource("2_0xtk0")]
+[node name="Bit1" parent="." instance=ExtResource("2_0xtk0")]
 position = Vector2(506, 176)
+
+[node name="Bit2" parent="." instance=ExtResource("2_0xtk0")]
+position = Vector2(168, 588)
+
+[node name="Bit3" parent="." instance=ExtResource("2_0xtk0")]
+position = Vector2(563, 387)
+
+[node name="Bit4" parent="." instance=ExtResource("2_0xtk0")]
+position = Vector2(959, 103)
+
+[node name="Bit5" parent="." instance=ExtResource("2_0xtk0")]
+position = Vector2(350, 367)
+
+[node name="Bit6" parent="." instance=ExtResource("2_0xtk0")]
+position = Vector2(808, 426)
