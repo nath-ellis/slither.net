@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwnj5d2ellxrb"]
+[gd_scene load_steps=4 format=3 uid="uid://bwnj5d2ellxrb"]
 
+[ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="1_k3ufk"]
 [ext_resource type="PackedScene" uid="uid://im0eju43g3gx" path="res://scenes/player.tscn" id="1_ypwkn"]
 [ext_resource type="PackedScene" uid="uid://ddmc76uee3cyg" path="res://scenes/bit.tscn" id="2_0xtk0"]
 
 [node name="Game" type="Node2D"]
 
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 16)
+texture = ExtResource("1_k3ufk")
+region_enabled = true
+region_rect = Rect2(0, 0, 12800, 7200)
+
 [node name="Player" parent="." instance=ExtResource("1_ypwkn")]
-position = Vector2(128, 128)
+position = Vector2(160, 96)
 
 [node name="Bit1" parent="." instance=ExtResource("2_0xtk0")]
 position = Vector2(506, 176)
