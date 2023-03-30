@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvqsmbpp2wcd"]
+
+[ext_resource type="Texture2D" uid="uid://3m3kkntvlc8a" path="res://assets/snakes/default/body_1.png" id="1_ka52l"]
+[ext_resource type="Script" path="res://scripts/player_body.gd" id="1_vx0ls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1icas"]
+size = Vector2(64, 64)
+
+[node name="PlayerBody" type="Area2D"]
+script = ExtResource("1_vx0ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ka52l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1icas")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
