@@ -10,14 +10,6 @@ size = Vector2(64, 64)
 [node name="Player" type="Node2D"]
 script = ExtResource("1_s6y0d")
 
-[node name="Face" type="Area2D" parent="."]
-
-[node name="Sprite" type="Sprite2D" parent="Face"]
-texture = ExtResource("1_gkbog")
-
-[node name="Hitbox" type="CollisionShape2D" parent="Face"]
-shape = SubResource("RectangleShape2D_jepyo")
-
 [node name="Body" type="Node2D" parent="."]
 
 [node name="PlayerBody1" parent="Body" instance=ExtResource("3_sxusk")]
@@ -25,6 +17,14 @@ position = Vector2(-64, 0)
 
 [node name="PlayerBody2" parent="Body" instance=ExtResource("3_sxusk")]
 position = Vector2(-128, 0)
+
+[node name="Face" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Face"]
+texture = ExtResource("1_gkbog")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Face"]
+shape = SubResource("RectangleShape2D_jepyo")
 
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.25
