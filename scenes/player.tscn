@@ -26,6 +26,10 @@ texture = ExtResource("1_gkbog")
 [node name="Hitbox" type="CollisionShape2D" parent="Face"]
 shape = SubResource("RectangleShape2D_jepyo")
 
+[node name="Camera2D" type="Camera2D" parent="Face"]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
