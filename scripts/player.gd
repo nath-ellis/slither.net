@@ -53,6 +53,7 @@ func _on_movement_timer_timeout() -> void:
 		face_sprite.rotation_degrees = 90
 	
 	face.global_position = face.global_position + Manager.player_vel
+	Manager.player_pos = face.global_position
 	
 	for b in body.get_children():
 		b.call("move")
