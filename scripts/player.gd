@@ -3,6 +3,9 @@ extends Node2D
 
 const PLAYER_BODY = preload("res://scenes/player_body.tscn")
 
+var sped_up = false
+var lose_length_counter = 0
+
 @onready var face = $Face
 @onready var face_sprite = $Face/Sprite
 @onready var body = $Body
@@ -36,6 +39,12 @@ func _physics_process(_delta) -> void:
 	elif Input.is_action_pressed("right") and Manager.player_vel.x == 0:
 		add_move_to()
 		Manager.player_vel = Vector2(Manager.player_speed, 0)
+	
+	if Input.is_action_just_pressed("speed_up") and !sped_up and body.get_child_count() > 1:
+		sped_up = true
+	
+	if Input.is_action_just_released("speed_up") and sped_up:
+		sped_up = false
 
 
 func _on_movement_timer_timeout() -> void:
@@ -58,7 +67,24 @@ func _on_movement_timer_timeout() -> void:
 	for b in body.get_children():
 		b.call("move")
 	
-	movement_timer.start()
+	if sped_up:
+		# Decrease length when sped up
+		if lose_length_counter >= 5:
+			Manager.length -= 1
+			
+			if body.get_child_count() > 1:
+				body.get_children()[len(body.get_children())-1].queue_free()
+				
+			else:
+				sped_up = false
+			
+			lose_length_counter = 0
+		
+		movement_timer.start(0.1)
+		lose_length_counter += 1
+		
+	else:
+		movement_timer.start(0.25)
 
 
 func increase_length() -> void:

@@ -9,6 +9,6 @@ func _ready() -> void:
 
 
 func _on_area_entered(area) -> void:
-	Manager.increase_length()
+	Manager.length += 1
 	area.get_parent().call_deferred("increase_length")
 	queue_free()
