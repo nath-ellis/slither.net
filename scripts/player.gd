@@ -4,6 +4,7 @@ extends Node2D
 const PLAYER_BODY = preload("res://scenes/player_body.tscn")
 
 var sped_up = false
+var increase_length_counter = 0
 var lose_length_counter = 0
 
 @onready var face = $Face
@@ -87,18 +88,23 @@ func _on_movement_timer_timeout() -> void:
 		movement_timer.start(0.25)
 
 
-func increase_length() -> void:
-	var new_body = PLAYER_BODY.instantiate()
-	var end_body = body.get_children()[len(body.get_children())-1]
-	
-	if len(end_body.move_to) > 0:
-		new_body.position = end_body.position - end_body.move_to[0]["vel"]
+func increase_length(increase_amount) -> void:
+	if increase_length_counter >= 10:
+		var new_body = PLAYER_BODY.instantiate()
+		var end_body = body.get_children()[len(body.get_children())-1]
 		
-		# Add places it needs to move to
-		for e in end_body.move_to:
-			new_body.move_to.append(e)
+		if len(end_body.move_to) > 0:
+			new_body.position = end_body.position - end_body.move_to[0]["vel"]
+			
+			# Add places it needs to move to
+			for e in end_body.move_to:
+				new_body.move_to.append(e)
+			
+		else:
+			new_body.position = end_body.position - Manager.player_vel
 		
+		body.add_child(new_body)
+		
+		increase_length_counter = 0
 	else:
-		new_body.position = end_body.position - Manager.player_vel
-	
-	body.add_child(new_body)
+		increase_length_counter += increase_amount
