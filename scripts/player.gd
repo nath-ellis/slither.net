@@ -24,6 +24,27 @@ func add_move_to() -> void:
 			})
 
 
+func _process(_delta) -> void:
+	# Check whether the player's size should be increased
+	if increase_length_counter >= 10:
+		var new_body = PLAYER_BODY.instantiate()
+		var end_body = body.get_children()[len(body.get_children())-1]
+		
+		if len(end_body.move_to) > 0:
+			new_body.position = end_body.position - end_body.move_to[0]["vel"]
+			
+			# Add places it needs to move to
+			for e in end_body.move_to:
+				new_body.move_to.append(e)
+			
+		else:
+			new_body.position = end_body.position - Manager.player_vel
+		
+		body.add_child(new_body)
+		
+		increase_length_counter -= 10
+
+
 func _physics_process(_delta) -> void:
 	if Input.is_action_pressed("up") and Manager.player_vel.y == 0:
 		add_move_to()
@@ -89,22 +110,4 @@ func _on_movement_timer_timeout() -> void:
 
 
 func increase_length(increase_amount) -> void:
-	if increase_length_counter >= 10:
-		var new_body = PLAYER_BODY.instantiate()
-		var end_body = body.get_children()[len(body.get_children())-1]
-		
-		if len(end_body.move_to) > 0:
-			new_body.position = end_body.position - end_body.move_to[0]["vel"]
-			
-			# Add places it needs to move to
-			for e in end_body.move_to:
-				new_body.move_to.append(e)
-			
-		else:
-			new_body.position = end_body.position - Manager.player_vel
-		
-		body.add_child(new_body)
-		
-		increase_length_counter = 0
-	else:
-		increase_length_counter += increase_amount
+	increase_length_counter += increase_amount
