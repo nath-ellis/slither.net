@@ -46,8 +46,6 @@ func _ready() -> void:
 
 
 func _on_area_entered(area) -> void:
-	Manager.length += 1
-	
 	if area.get_parent().has_method("increase_length"):
 		if get_meta("size") == "large":
 			area.get_parent().call_deferred("increase_length", 10)

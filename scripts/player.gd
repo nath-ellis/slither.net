@@ -42,6 +42,7 @@ func _process(_delta) -> void:
 		
 		body.add_child(new_body)
 		
+		Manager.length += 1
 		increase_length_counter -= 10
 
 func _physics_process(_delta) -> void:
@@ -91,7 +92,8 @@ func _on_movement_timer_timeout() -> void:
 	if sped_up:
 		# Decrease length when sped up
 		if lose_length_counter >= 5:
-			Manager.length -= 1
+			if Manager.length > 1:
+				Manager.length -= 1
 			
 			if body.get_child_count() > 1:
 				body.get_children()[len(body.get_children())-1].queue_free()

@@ -7,8 +7,9 @@ const LARGE_BIT = preload("res://scenes/large_bit.tscn")
 @onready var player = $Player
 @onready var bits = $Bits
 @onready var bit_timer = $BitTimer
-@onready var growth_progress_bar = $UI/GrowthProgressBar
-@onready var growth_particles = $UI/GrowthParticles
+@onready var growth_progress_bar = $UI/Control/GrowthProgressBar
+@onready var growth_particles = $UI/Control/GrowthParticles
+@onready var length = $UI/Control/Length
 
 
 func _process(_delta) -> void:
@@ -18,6 +19,8 @@ func _process(_delta) -> void:
 		# Reset bar after particles finish
 		if !growth_particles.emitting:
 			growth_progress_bar.value = player.increase_length_counter * 10
+	
+	length.text = str(Manager.length)
 
 
 func _on_bit_timer_timeout() -> void:
