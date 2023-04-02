@@ -41,15 +41,23 @@ autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GrowthProgressBar" type="ProgressBar" parent="UI"]
-offset_left = 13.0
-offset_top = 13.0
-offset_right = 313.0
-offset_bottom = 70.0
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 4
 theme = ExtResource("4_w0r5x")
 
-[node name="GrowthParticles" type="GPUParticles2D" parent="UI"]
-position = Vector2(157, 33)
+[node name="GrowthProgressBar" type="ProgressBar" parent="UI/Control"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 67.0
+
+[node name="GrowthParticles" type="GPUParticles2D" parent="UI/Control"]
+position = Vector2(144, 20)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_tmvcp")
 lifetime = 0.5
@@ -58,5 +66,12 @@ explosiveness = 0.5
 randomness = 1.0
 local_coords = true
 
+[node name="Length" type="Label" parent="UI/Control"]
+offset_left = 16.0
+offset_top = 79.0
+offset_right = 79.0
+offset_bottom = 124.0
+text = "2"
+
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
-[connection signal="value_changed" from="UI/GrowthProgressBar" to="." method="_on_growth_progress_bar_value_changed"]
+[connection signal="value_changed" from="UI/Control/GrowthProgressBar" to="." method="_on_growth_progress_bar_value_changed"]
