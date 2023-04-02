@@ -3,6 +3,7 @@ extends Node2D
 
 const PLAYER_BODY = preload("res://scenes/player_body.tscn")
 
+var moved = false
 var sped_up = false
 var increase_length_counter = 0
 var lose_length_counter = 0
@@ -46,21 +47,27 @@ func _process(_delta) -> void:
 		increase_length_counter -= 10
 
 func _physics_process(_delta) -> void:
-	if Input.is_action_pressed("up") and Manager.player_vel.y == 0:
-		add_move_to()
-		Manager.player_vel = Vector2(0, -Manager.player_speed)
-		
-	elif Input.is_action_pressed("down") and Manager.player_vel.y == 0:
-		add_move_to()
-		Manager.player_vel = Vector2(0, Manager.player_speed)
-		
-	elif Input.is_action_pressed("left") and Manager.player_vel.x == 0:
-		add_move_to()
-		Manager.player_vel = Vector2(-Manager.player_speed, 0)
-		
-	elif Input.is_action_pressed("right") and Manager.player_vel.x == 0:
-		add_move_to()
-		Manager.player_vel = Vector2(Manager.player_speed, 0)
+	# Prevent the player from changing direction too fast
+	if !moved:
+		if Input.is_action_pressed("up") and Manager.player_vel.y == 0:
+			add_move_to()
+			Manager.player_vel = Vector2(0, -Manager.player_speed)
+			moved = true
+			
+		elif Input.is_action_pressed("down") and Manager.player_vel.y == 0:
+			add_move_to()
+			Manager.player_vel = Vector2(0, Manager.player_speed)
+			moved = true
+			
+		elif Input.is_action_pressed("left") and Manager.player_vel.x == 0:
+			add_move_to()
+			Manager.player_vel = Vector2(-Manager.player_speed, 0)
+			moved = true
+			
+		elif Input.is_action_pressed("right") and Manager.player_vel.x == 0:
+			add_move_to()
+			Manager.player_vel = Vector2(Manager.player_speed, 0)
+			moved = true
 	
 	if Input.is_action_just_pressed("speed_up") and !sped_up and body.get_child_count() > 1:
 		sped_up = true
@@ -108,6 +115,8 @@ func _on_movement_timer_timeout() -> void:
 		
 	else:
 		movement_timer.start(0.25)
+	
+	moved = false
 
 
 func increase_length(increase_amount) -> void:
