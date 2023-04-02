@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player_body.gd" id="1_vx0ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1icas"]
-size = Vector2(64, 64)
+size = Vector2(62, 62)
 
 [node name="PlayerBody" type="Area2D"]
 script = ExtResource("1_vx0ls")
@@ -15,3 +15,5 @@ texture = ExtResource("1_ka52l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1icas")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
