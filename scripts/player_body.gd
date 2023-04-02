@@ -52,3 +52,9 @@ func _ready() -> void:
 func _physics_process(_delta) -> void:
 	if len(move_to) > 0:
 		check_pos()
+
+
+func _on_area_entered(area) -> void:
+	# Player collides with their own body
+	if area.name == "Face" and area.global_position == global_position:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")

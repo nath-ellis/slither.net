@@ -37,7 +37,7 @@ func _on_bit_timer_timeout() -> void:
 	bit_timer.start()
 
 
-func _on_growth_progress_bar_value_changed(value):
+func _on_growth_progress_bar_value_changed(value) -> void:
 	if value == growth_progress_bar.max_value:
 		# Emit particles
 		growth_particles.emitting = true
