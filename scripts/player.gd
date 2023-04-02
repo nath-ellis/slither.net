@@ -44,7 +44,6 @@ func _process(_delta) -> void:
 		
 		increase_length_counter -= 10
 
-
 func _physics_process(_delta) -> void:
 	if Input.is_action_pressed("up") and Manager.player_vel.y == 0:
 		add_move_to()

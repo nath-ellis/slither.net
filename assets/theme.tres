@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://csw4cm7wa6hw7"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://csw4cm7wa6hw7"]
 
 [ext_resource type="FontFile" uid="uid://b70at7ivvsok8" path="res://assets/m6x11.ttf" id="1_48q5e"]
 
@@ -82,6 +82,30 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4o0a"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv2r3"]
+bg_color = Color(0.437317, 0.999423, 0.882377, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 16
@@ -96,3 +120,10 @@ Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 16
 Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_48q5e")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 32
+ProgressBar/fonts/font = ExtResource("1_48q5e")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_u4o0a")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hv2r3")

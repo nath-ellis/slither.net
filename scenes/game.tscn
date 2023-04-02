@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwnj5d2ellxrb"]
+[gd_scene load_steps=6 format=3 uid="uid://bwnj5d2ellxrb"]
 
 [ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="1_k3ufk"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qfu1j"]
 [ext_resource type="PackedScene" uid="uid://im0eju43g3gx" path="res://scenes/player.tscn" id="1_ypwkn"]
+[ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="4_w0r5x"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tmvcp"]
+particle_flag_disable_z = true
+direction = Vector3(100, 100, 0)
+spread = 180.0
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 90.0
+initial_velocity_max = 90.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_min = 5.0
+scale_max = 5.0
+color = Color(0.717647, 0.717647, 0, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qfu1j")
@@ -23,4 +39,24 @@ position = Vector2(160, 96)
 wait_time = 0.05
 autostart = true
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GrowthProgressBar" type="ProgressBar" parent="UI"]
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 313.0
+offset_bottom = 70.0
+theme = ExtResource("4_w0r5x")
+
+[node name="GrowthParticles" type="GPUParticles2D" parent="UI"]
+position = Vector2(157, 33)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_tmvcp")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+randomness = 1.0
+local_coords = true
+
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
+[connection signal="value_changed" from="UI/GrowthProgressBar" to="." method="_on_growth_progress_bar_value_changed"]
