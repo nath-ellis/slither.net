@@ -11,7 +11,7 @@ const LARGE_BIT = preload("res://scenes/large_bit.tscn")
 @onready var growth_particles = $UI/GrowthParticles
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if growth_progress_bar.value != growth_progress_bar.max_value:
 		growth_progress_bar.value = player.increase_length_counter * 10
 	else:
