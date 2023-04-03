@@ -26,7 +26,7 @@ func move() -> void:
 		global_position = global_position + move_to[0]["vel"]
 		
 	else:
-		global_position = global_position + Manager.player_vel
+		global_position = global_position + get_parent().get_parent().vel
 
 
 func _ready() -> void:
@@ -37,7 +37,7 @@ func _ready() -> void:
 			count += 1
 	
 	if count == 2:  # There are 2 at the start
-		if name == "PlayerBody1":
+		if name == "EnemyBody1":
 			sprite.texture = load("res://assets/snakes/default/body_2.png")
 			
 	else:
@@ -55,9 +55,8 @@ func _physics_process(_delta) -> void:
 
 
 func _on_area_entered(area) -> void:
-	# Player collides with their own body
-	if area.name == "Face" and area.global_position == global_position:
+	if area.name == "Face":
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
-	if area.name == "EnemyFace" and area.global_position == global_position:
+	if area.name == "EnemyFace":
 		area.get_parent().queue_free()

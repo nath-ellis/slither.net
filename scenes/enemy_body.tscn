@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc8phjp33tcab"]
+
+[ext_resource type="Script" path="res://scripts/enemy_body.gd" id="1_f3mm0"]
+[ext_resource type="Texture2D" uid="uid://3m3kkntvlc8a" path="res://assets/snakes/default/body_1.png" id="1_xsruo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqi6m"]
+size = Vector2(62, 62)
+
+[node name="EnemyBody" type="Area2D"]
+script = ExtResource("1_f3mm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xsruo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cqi6m")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
