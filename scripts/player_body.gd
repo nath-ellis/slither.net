@@ -56,8 +56,5 @@ func _physics_process(_delta) -> void:
 
 func _on_area_entered(area) -> void:
 	# Player collides with their own body
-	if area.name == "Face" and area.global_position == global_position:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-	
-	if area.name == "EnemyFace" and area.global_position == global_position:
-		area.get_parent().queue_free()
+	if (area.name == "Face" or area.name == "EnemyFace") and area.global_position == global_position:
+		area.get_parent().call("die")
