@@ -31,11 +31,11 @@ texture = ExtResource("1_k3ufk")
 region_enabled = true
 region_rect = Rect2(0, 0, 12800, 7200)
 
-[node name="Player" parent="." instance=ExtResource("1_ypwkn")]
-position = Vector2(160, 96)
-
 [node name="Enemy" parent="." instance=ExtResource("4_bagti")]
 position = Vector2(224, 288)
+
+[node name="Player" parent="." instance=ExtResource("1_ypwkn")]
+position = Vector2(160, 96)
 
 [node name="Bits" type="Node2D" parent="."]
 

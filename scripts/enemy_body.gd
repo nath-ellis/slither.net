@@ -55,8 +55,5 @@ func _physics_process(_delta) -> void:
 
 
 func _on_area_entered(area) -> void:
-	if area.name == "Face":
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-	
-	if area.name == "EnemyFace":
-		area.get_parent().queue_free()
+	if area.name == "Face" or area.name == "EnemyFace":
+		area.get_parent().call("die")

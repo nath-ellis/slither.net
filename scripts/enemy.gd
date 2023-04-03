@@ -8,6 +8,7 @@ var moved = false
 var sped_up = false
 var increase_length_counter = 0
 var lose_length_counter = 0
+var dead = false
 
 @onready var face = $EnemyFace
 @onready var face_sprite = $EnemyFace/Sprite
@@ -82,54 +83,59 @@ func _physics_process(_delta) -> void:
 
 
 func _on_movement_timer_timeout() -> void:
-	# Rotate sprite on movement to prevent glitchiness
-	if vel.y < 0:
-		face_sprite.rotation_degrees = 0
-		
-	elif vel.y > 0:
-		face_sprite.rotation_degrees = 180
-		
-	elif vel.x < 0:
-		face_sprite.rotation_degrees = 270
-		
-	elif vel.x > 0:
-		face_sprite.rotation_degrees = 90
-	
-	face.global_position = face.global_position + vel
-	
-	for b in body.get_children():
-		b.call("move")
-	
-	if sped_up:
-		# Decrease length when sped up
-		if lose_length_counter >= 5:
-			if Manager.length > 1:
-				Manager.length -= 1
+	if !dead:
+		# Rotate sprite on movement to prevent glitchiness
+		if vel.y < 0:
+			face_sprite.rotation_degrees = 0
 			
-			if body.get_child_count() > 1:
-				body.get_children()[len(body.get_children())-1].queue_free()
+		elif vel.y > 0:
+			face_sprite.rotation_degrees = 180
+			
+		elif vel.x < 0:
+			face_sprite.rotation_degrees = 270
+			
+		elif vel.x > 0:
+			face_sprite.rotation_degrees = 90
+		
+		face.global_position = face.global_position + vel
+		
+		for b in body.get_children():
+			b.call("move")
+		
+		if sped_up:
+			# Decrease length when sped up
+			if lose_length_counter >= 5:
+				if Manager.length > 1:
+					Manager.length -= 1
 				
-			else:
-				sped_up = false
+				if body.get_child_count() > 1:
+					body.get_children()[len(body.get_children())-1].queue_free()
+					
+				else:
+					sped_up = false
+				
+				lose_length_counter = 0
 			
-			lose_length_counter = 0
+			movement_timer.start(0.1)
+			lose_length_counter += 1
+			
+		else:
+			movement_timer.start(0.25)
 		
-		movement_timer.start(0.1)
-		lose_length_counter += 1
-		
+		moved = false
 	else:
-		movement_timer.start(0.25)
-	
-	moved = false
+		queue_free()
 
 
 func increase_length(increase_amount) -> void:
 	increase_length_counter += increase_amount
 
 
-func _on_enemy_face_area_entered(area):
-	if area.name == "Face":
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-	
-	if area.name == "EnemyFace":
-		area.get_parent().queue_free()
+func _on_enemy_face_area_entered(area) -> void:
+	if area.name == "Face" or area.name == "EnemyFace":
+		area.get_parent().call("die")
+
+
+func die() -> void:
+	face_sprite.texture = load("res://assets/snakes/default/dead.png")
+	dead = true
