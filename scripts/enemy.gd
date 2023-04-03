@@ -2,6 +2,7 @@ extends Node2D
 
 
 const ENEMY_BODY = preload("res://scenes/enemy_body.tscn")
+const BIT = preload("res://scenes/bit.tscn")
 
 var vel = Vector2(Manager.player_speed, 0)
 var moved = false
@@ -14,6 +15,7 @@ var dead = false
 @onready var face_sprite = $EnemyFace/Sprite
 @onready var body = $Body
 @onready var movement_timer = $MovementTimer
+@onready var bits = $"../Bits"
 
 
 func add_move_to() -> void:
@@ -124,6 +126,23 @@ func _on_movement_timer_timeout() -> void:
 		
 		moved = false
 	else:
+		# Add remains where the enemy dies
+		for b in body.get_children():
+			var new_bit_1 = BIT.instantiate()
+			var new_bit_2 = BIT.instantiate()
+			
+			bits.add_child(new_bit_1)
+			bits.add_child(new_bit_2)
+			
+			new_bit_1.global_position = Vector2(
+				b.global_position.x + randi_range(0, 64),
+				b.global_position.y + randi_range(0, 64)
+			)
+			new_bit_2.global_position = Vector2(
+				b.global_position.x + randi_range(0, 64),
+				b.global_position.y + randi_range(0, 64)
+			)
+		
 		queue_free()
 
 
