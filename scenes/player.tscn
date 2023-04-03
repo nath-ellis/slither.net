@@ -34,4 +34,5 @@ position_smoothing_speed = 3.0
 wait_time = 0.25
 autostart = true
 
+[connection signal="area_entered" from="Face" to="." method="_on_face_area_entered"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
