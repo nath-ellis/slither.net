@@ -29,6 +29,24 @@ func add_move_to() -> void:
 			})
 
 
+func _ready() -> void:
+	for i in range(randi_range(0, 50)):
+		var new_body = ENEMY_BODY.instantiate()
+		var end_body = body.get_children()[len(body.get_children())-1]
+		
+		if len(end_body.move_to) > 0:
+			new_body.position = end_body.position - end_body.move_to[0]["vel"]
+			
+			# Add places it needs to move to
+			for e in end_body.move_to:
+				new_body.move_to.append(e)
+			
+		else:
+			new_body.position = end_body.position - vel
+		
+		body.add_child(new_body)
+
+
 func _process(_delta) -> void:
 	# Check whether the player's size should be increased
 	if increase_length_counter >= 10:
@@ -53,7 +71,7 @@ func _process(_delta) -> void:
 func _physics_process(_delta) -> void:
 	# Prevent the player from changing direction too fast
 	if !moved:
-		var chance = randi_range(1, 100)
+		var chance = randi_range(1, 500)
 		
 		if chance == 1 and vel.y == 0:
 			add_move_to()
