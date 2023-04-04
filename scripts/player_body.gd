@@ -56,5 +56,5 @@ func _physics_process(_delta) -> void:
 
 func _on_area_entered(area) -> void:
 	# Player collides with their own body
-	if (area.name == "Face" or area.name == "EnemyFace") and area.global_position == global_position:
+	if area.name == "Face" or area.name == "EnemyFace":
 		area.get_parent().call("die")
