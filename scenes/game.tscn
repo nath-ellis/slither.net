@@ -32,7 +32,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 12800, 7200)
 
 [node name="Enemy" parent="." instance=ExtResource("4_bagti")]
-position = Vector2(224, 288)
+position = Vector2(544, 160)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_bagti")]
 position = Vector2(352, 416)
