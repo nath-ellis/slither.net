@@ -15,7 +15,7 @@ var dead = false
 @onready var face_sprite = $EnemyFace/Sprite
 @onready var body = $Body
 @onready var movement_timer = $MovementTimer
-@onready var bits = $"../Bits"
+@onready var bits = $"../../Bits"
 
 
 func add_move_to() -> void:
@@ -134,9 +134,6 @@ func _on_movement_timer_timeout() -> void:
 		if sped_up:
 			# Decrease length when sped up
 			if lose_length_counter >= 5:
-				if Manager.length > 1:
-					Manager.length -= 1
-				
 				if body.get_child_count() > 1:
 					body.get_children()[len(body.get_children())-1].queue_free()
 					
