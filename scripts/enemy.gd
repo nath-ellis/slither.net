@@ -3,6 +3,7 @@ extends Node2D
 
 const ENEMY_BODY = preload("res://scenes/enemy_body.tscn")
 const BIT = preload("res://scenes/bit.tscn")
+const LARGE_BIT = preload("res://scenes/large_bit.tscn")
 
 var vel = Vector2(Manager.player_speed, 0)
 var moved = false
@@ -154,6 +155,7 @@ func _on_movement_timer_timeout() -> void:
 		for b in body.get_children():
 			var new_bit_1 = BIT.instantiate()
 			var new_bit_2 = BIT.instantiate()
+			var new_large_bit = LARGE_BIT.instantiate()
 			
 			bits.add_child(new_bit_1)
 			bits.add_child(new_bit_2)
@@ -166,6 +168,15 @@ func _on_movement_timer_timeout() -> void:
 				b.global_position.x + randi_range(0, 64),
 				b.global_position.y + randi_range(0, 64)
 			)
+			
+			# 1 in 10 chance for a large bit to be dropped
+			if randi_range(1, 10) == 1:
+				bits.add_child(new_large_bit)
+				
+				new_large_bit.global_position = Vector2(
+					b.global_position.x + randi_range(0, 64),
+					b.global_position.y + randi_range(0, 64)
+				)
 		
 		queue_free()
 
