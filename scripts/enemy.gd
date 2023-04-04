@@ -30,6 +30,15 @@ func add_move_to() -> void:
 
 
 func _ready() -> void:
+	var rand_x = randi_range(-50, 50)
+	var rand_y = randi_range(-50, 50)
+	
+	# Randomize position
+	global_position = Vector2(
+		Manager.player_pos.x + (rand_x * 64) + 32,
+		Manager.player_pos.y + (rand_y * 64) + 32
+	)
+	
 	for i in range(randi_range(0, 50)):
 		var new_body = ENEMY_BODY.instantiate()
 		var end_body = body.get_children()[len(body.get_children())-1]
