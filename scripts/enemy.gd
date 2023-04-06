@@ -31,16 +31,16 @@ func add_move_to() -> void:
 
 
 func _ready() -> void:
-	var rand_x = randi_range(-50, 50)
-	var rand_y = randi_range(-50, 50)
+	var rand_x = randi_range(-100, 100)
+	var rand_y = randi_range(-100, 100)
 	
 	# Randomize position
 	global_position = Vector2(
-		Manager.player_pos.x + (rand_x * 64) + 32,
-		Manager.player_pos.y + (rand_y * 64) + 32
+		(rand_x * 64) + 32,
+		(rand_y * 64) + 32
 	)
 	
-	for i in range(randi_range(0, 50)):
+	for i in range(randi_range(0, 100)):
 		var new_body = ENEMY_BODY.instantiate()
 		var end_body = body.get_children()[len(body.get_children())-1]
 		
@@ -53,6 +53,10 @@ func _ready() -> void:
 			
 		else:
 			new_body.position = end_body.position - vel
+		
+		# Prevent spawning on top of player 
+		if new_body.position == Manager.player_pos:
+			break
 		
 		body.add_child(new_body)
 

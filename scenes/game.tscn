@@ -87,6 +87,10 @@ position = Vector2(160, 96)
 wait_time = 0.05
 autostart = true
 
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
@@ -124,4 +128,5 @@ offset_bottom = 124.0
 text = "2"
 
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="value_changed" from="UI/Control/GrowthProgressBar" to="." method="_on_growth_progress_bar_value_changed"]
