@@ -3,6 +3,7 @@ extends Node2D
 
 const BIT = preload("res://scenes/bit.tscn")
 const LARGE_BIT = preload("res://scenes/large_bit.tscn")
+const ENEMY = preload("res://scenes/enemy.tscn")
 
 @onready var player = $Player
 @onready var bits = $Bits
@@ -10,6 +11,8 @@ const LARGE_BIT = preload("res://scenes/large_bit.tscn")
 @onready var growth_progress_bar = $UI/Control/GrowthProgressBar
 @onready var growth_particles = $UI/Control/GrowthParticles
 @onready var length = $UI/Control/Length
+@onready var enemies = $Enemies
+@onready var enemy_timer = $EnemyTimer
 
 
 func _process(_delta) -> void:
@@ -41,3 +44,8 @@ func _on_growth_progress_bar_value_changed(value) -> void:
 	if value == growth_progress_bar.max_value:
 		# Emit particles
 		growth_particles.emitting = true
+
+
+func _on_enemy_timer_timeout():
+	enemies.add_child(ENEMY.instantiate())
+	enemy_timer.start()
