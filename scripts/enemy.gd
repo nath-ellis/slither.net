@@ -11,6 +11,19 @@ var sped_up = false
 var increase_length_counter = 0
 var lose_length_counter = 0
 var dead = false
+var colour_options = [
+	"blue",
+	"blueandyellow",
+	"cyan",
+	"default",
+	"greenandblack",
+	"greenandpink",
+	"purple",
+	"purpleandblack",
+	"red",
+	"redandorange"
+]
+var colour = colour_options[randi() % colour_options.size()]
 
 @onready var face = $EnemyFace
 @onready var face_sprite = $EnemyFace/Sprite
@@ -31,6 +44,9 @@ func add_move_to() -> void:
 
 
 func _ready() -> void:
+	face_sprite.texture = load("res://assets/snakes/" + colour + "/face.png")
+	
+	# Set position
 	var rand_x = randi_range(-100, 100)
 	var rand_y = randi_range(-100, 100)
 	
@@ -40,6 +56,7 @@ func _ready() -> void:
 		(rand_y * 64) + 32
 	)
 	
+	# Add body
 	for i in range(randi_range(0, 100)):
 		var new_body = ENEMY_BODY.instantiate()
 		var end_body = body.get_children()[len(body.get_children())-1]
@@ -195,5 +212,5 @@ func _on_enemy_face_area_entered(area) -> void:
 
 
 func die() -> void:
-	face_sprite.texture = load("res://assets/snakes/default/dead.png")
+	face_sprite.texture = load("res://assets/snakes/" + colour + "/dead.png")
 	dead = true
