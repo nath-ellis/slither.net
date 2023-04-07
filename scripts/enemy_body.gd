@@ -3,6 +3,7 @@ extends Area2D
 
 # Contains all of the places the player turned at
 var move_to = []
+var colour = "default"
 
 @onready var sprite = $Sprite2D
 
@@ -36,17 +37,21 @@ func _ready() -> void:
 		if b is Area2D:
 			count += 1
 	
+	colour = get_parent().get_parent().colour
+	
 	if count == 2:  # There are 2 at the start
 		if name == "EnemyBody1":
-			sprite.texture = load("res://assets/snakes/default/body_2.png")
+			sprite.texture = load("res://assets/snakes/" + colour + "/body_2.png")
+		else:
+			sprite.texture = load("res://assets/snakes/" + colour + "/body_1.png")
 			
 	else:
 		# Should alternate between sprites
 		if count % 2 == 0:
-			sprite.texture = load("res://assets/snakes/default/body_1.png")
+			sprite.texture = load("res://assets/snakes/" + colour + "/body_1.png")
 			
 		else:
-			sprite.texture = load("res://assets/snakes/default/body_2.png")
+			sprite.texture = load("res://assets/snakes/" + colour + "/body_2.png")
 
 
 func _physics_process(_delta) -> void:
