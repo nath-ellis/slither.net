@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c564qfeag65xa"
-path="res://.godot/imported/face.png-3a900f7b9286ced7030149d59abcc17e.ctex"
+uid="uid://1c5wu4sbgjfq"
+path="res://.godot/imported/dead.png-05b67ace63b06a19f350ae83ee36e1b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/snakes/blue/face.png"
-dest_files=["res://.godot/imported/face.png-3a900f7b9286ced7030149d59abcc17e.ctex"]
+source_file="res://assets/snakes/white/dead.png"
+dest_files=["res://.godot/imported/dead.png-05b67ace63b06a19f350ae83ee36e1b8.ctex"]
 
 [params]
 
