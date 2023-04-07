@@ -12,16 +12,20 @@ var increase_length_counter = 0
 var lose_length_counter = 0
 var dead = false
 var colour_options = [
+	"black",
 	"blue",
 	"blueandyellow",
 	"cyan",
 	"default",
 	"greenandblack",
 	"greenandpink",
+	"grey",
 	"purple",
-	"purpleandblack",
 	"red",
-	"redandorange"
+	"redandorange",
+	"redandyellow",
+	"teal",
+	"white"
 ]
 var colour = colour_options[randi() % colour_options.size()]
 
