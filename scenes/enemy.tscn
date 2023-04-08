@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdbmix7gq0ohd"]
 
-[ext_resource type="Texture2D" uid="uid://dq3x7ttmjamdc" path="res://assets/snakes/default/face.png" id="1_33wdb"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_qf5hh"]
 [ext_resource type="PackedScene" uid="uid://dc8phjp33tcab" path="res://scenes/enemy_body.tscn" id="2_2fqoj"]
+[ext_resource type="Texture2D" uid="uid://ds7xeomx34bfi" path="res://assets/snakes/default/face.png" id="3_c6wap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je5be"]
 size = Vector2(62, 62)
@@ -21,7 +21,7 @@ position = Vector2(-128, 0)
 [node name="EnemyFace" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="EnemyFace"]
-texture = ExtResource("1_33wdb")
+texture = ExtResource("3_c6wap")
 
 [node name="Hitbox" type="CollisionShape2D" parent="EnemyFace"]
 shape = SubResource("RectangleShape2D_je5be")
