@@ -88,7 +88,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 2.0
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
