@@ -60,6 +60,28 @@ func _ready() -> void:
 		(rand_y * 64) + 32
 	)
 	
+	# The radius around the player where no enemies should spawn
+	var radius = 5
+	
+	# Move if too close to player
+	if global_position.x < Manager.player_pos.x + (64 * radius) and \
+		global_position.x > Manager.player_pos.x - (64 * radius):
+			if global_position.x < Manager.player_pos.x:
+				global_position.y -= (64 * radius)
+			else:
+				global_position.y += (64 * radius)
+	
+	if global_position.y < Manager.player_pos.y + (64 * radius) and \
+		global_position.y > Manager.player_pos.y - (64 * radius):
+			if global_position.y < Manager.player_pos.x:
+				global_position.x -= (64 * radius)
+			else:
+				global_position.x += (64 * radius)
+	
+	# Prevent enemies from spawning on the same Y level to prevent the body from extending into the player
+	if global_position.y == Manager.player_pos.y:
+		global_position.y += 64
+	
 	# Add body
 	for i in range(randi_range(0, 100)):
 		var new_body = ENEMY_BODY.instantiate()
@@ -75,9 +97,12 @@ func _ready() -> void:
 		else:
 			new_body.position = end_body.position - vel
 		
-		# Prevent spawning on top of player 
-		if new_body.position == Manager.player_pos:
-			break
+		# Stop adding body if too close to player to prevent it spawning on them
+		if (global_position.x < Manager.player_pos.x + (64 * radius) and \
+			global_position.x > Manager.player_pos.x - (64 * radius)) or \
+			(global_position.y < Manager.player_pos.y + (64 * radius) and \
+			global_position.y > Manager.player_pos.y - (64 * radius)):
+				break
 		
 		body.add_child(new_body)
 
