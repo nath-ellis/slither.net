@@ -26,10 +26,10 @@ script = ExtResource("1_qfu1j")
 
 [node name="BG" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(0, 16)
+position = Vector2(0, 32)
 texture = ExtResource("1_k3ufk")
 region_enabled = true
-region_rect = Rect2(0, 0, 12800, 7200)
+region_rect = Rect2(0, 0, 128000, 72000)
 
 [node name="Bits" type="Node2D" parent="."]
 
