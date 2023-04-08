@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdbmix7gq0ohd"]
+[gd_scene load_steps=6 format=3 uid="uid://cdbmix7gq0ohd"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_qf5hh"]
 [ext_resource type="PackedScene" uid="uid://dc8phjp33tcab" path="res://scenes/enemy_body.tscn" id="2_2fqoj"]
 [ext_resource type="Texture2D" uid="uid://ds7xeomx34bfi" path="res://assets/snakes/default/face.png" id="3_c6wap"]
+[ext_resource type="Theme" uid="uid://bvx2xumgym1bg" path="res://assets/username.tres" id="4_ah28x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je5be"]
 size = Vector2(62, 62)
@@ -25,6 +26,16 @@ texture = ExtResource("3_c6wap")
 
 [node name="Hitbox" type="CollisionShape2D" parent="EnemyFace"]
 shape = SubResource("RectangleShape2D_je5be")
+
+[node name="Name" type="Label" parent="EnemyFace"]
+offset_left = -68.0
+offset_top = -57.0
+offset_right = 69.0
+offset_bottom = -32.0
+theme = ExtResource("4_ah28x")
+text = "Hello World"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.25

@@ -34,6 +34,7 @@ var colour = colour_options[randi() % colour_options.size()]
 @onready var body = $Body
 @onready var movement_timer = $MovementTimer
 @onready var bits = $"../../Bits"
+@onready var username = $EnemyFace/Name
 
 
 func add_move_to() -> void:
@@ -105,6 +106,8 @@ func _ready() -> void:
 				break
 		
 		body.add_child(new_body)
+	
+	username.text = Manager.new_name()
 
 
 func _process(_delta) -> void:
