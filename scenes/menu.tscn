@@ -30,4 +30,22 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
+[node name="Username" type="LineEdit" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -134.0
+offset_right = 168.5
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter Username"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
 [connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]

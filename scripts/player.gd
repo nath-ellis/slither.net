@@ -13,6 +13,11 @@ var dead = false
 @onready var face_sprite = $Face/Sprite
 @onready var body = $Body
 @onready var movement_timer = $MovementTimer
+@onready var username = $Face/Name
+
+
+func _ready() -> void:
+	username.text = Manager.player_name
 
 
 func add_move_to() -> void:
