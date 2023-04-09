@@ -17,21 +17,18 @@ var dead = false
 
 
 func _ready() -> void:
+	"""
+	Changes the player's in-game name to the one chosen on menu.tscn.
+	"""
+	
 	username.text = Manager.player_name
 
 
-func add_move_to() -> void:
-	for b in body.get_children():
-		# Don't add duplicates
-		if !b.move_to.has({"x": face.global_position.x, "y": face.global_position.y, "vel": Manager.player_vel}):
-			b.move_to.append({
-				"x": face.global_position.x,
-				"y": face.global_position.y,
-				"vel": Manager.player_vel,
-			})
-
-
 func _process(_delta) -> void:
+	"""
+	Increases the player's length when needed.
+	"""
+	
 	# Check whether the player's size should be increased
 	if increase_length_counter >= 10:
 		var new_body = PLAYER_BODY.instantiate()
@@ -54,6 +51,10 @@ func _process(_delta) -> void:
 
 
 func _physics_process(_delta) -> void:
+	"""
+	Handles user input, changing the player's direction accordingly.
+	"""
+	
 	# Prevent the player from changing direction too fast
 	if !moved:
 		if Input.is_action_pressed("up") and Manager.player_vel.y == 0:
@@ -84,6 +85,11 @@ func _physics_process(_delta) -> void:
 
 
 func _on_movement_timer_timeout() -> void:
+	"""
+	Moves the player once MovementTimer times out unless the player is 'dead'
+	where it then changes the scene to game_over.tscn.
+	"""
+	
 	if !dead:
 		# Rotate sprite on movement to prevent glitchiness
 		if Manager.player_vel.y < 0:
@@ -129,15 +135,44 @@ func _on_movement_timer_timeout() -> void:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 
-func increase_length(increase_amount) -> void:
-	increase_length_counter += increase_amount
-
-
 func _on_face_area_entered(area) -> void:
+	"""
+	Collision detection for the player's face.
+	"""
+	
 	if area.name == "EnemyFace" and area.global_position == global_position:
 		area.get_parent().call("die")
 
 
+func add_move_to() -> void:
+	"""
+	Adds an item to the move_to array for all of the body pieces.
+	"""
+	
+	for b in body.get_children():
+		# Don't add duplicates
+		if !b.move_to.has({"x": face.global_position.x, "y": face.global_position.y, "vel": Manager.player_vel}):
+			b.move_to.append({
+				"x": face.global_position.x,
+				"y": face.global_position.y,
+				"vel": Manager.player_vel,
+			})
+
+
+func increase_length(increase_amount) -> void:
+	"""
+	Called by the bit that the player collides with.
+	Once it reaches a certain number the code in _process() increases the player's length.
+	"""
+	
+	increase_length_counter += increase_amount
+
+
 func die() -> void:
+	"""
+	Called by the enemy that the player collides with.
+	Changes the face_sprite to the 'dead' version.
+	"""
+	
 	face_sprite.texture = load("res://assets/snakes/default/dead.png")
 	dead = true

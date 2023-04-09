@@ -929,6 +929,10 @@ var adjectives = [
 
 
 func new_name() -> String:
+	"""
+	Returns a random name created using the nouns and adjectives above.
+	"""
+	
 	var word_1
 	var word_2
 	

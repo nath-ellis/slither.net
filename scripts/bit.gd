@@ -6,6 +6,12 @@ extends Area2D
 
 
 func _ready() -> void:
+	"""
+	Randomizes the bit's position based on the player's position.
+	Then sets the time that the bit will be in the game for.
+	Finally, randomizes the sprite.
+	"""
+	
 	global_position = Vector2(
 		randi_range(Manager.player_pos.x - get_viewport_rect().size.x, Manager.player_pos.x + get_viewport_rect().size.x),
 		randi_range(Manager.player_pos.y - get_viewport_rect().size.y, Manager.player_pos.y + get_viewport_rect().size.y)
@@ -51,6 +57,12 @@ func _ready() -> void:
 
 
 func _on_area_entered(area) -> void:
+	"""
+	Collision detection for the bit.
+	Calls increase_length() along with how much it should increase by.
+	Removes the bit after the collision.
+	"""
+	
 	if area.get_parent().has_method("increase_length"):
 		if get_meta("size") == "large":
 			area.get_parent().call_deferred("increase_length", 10)
@@ -61,5 +73,9 @@ func _on_area_entered(area) -> void:
 	queue_free()
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
+	"""
+	Removes the bit after the timer times out.
+	"""
+	
 	queue_free()
