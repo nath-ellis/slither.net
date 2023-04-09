@@ -38,18 +38,17 @@ var length = 2
 @onready var username = $EnemyFace/Name
 
 
-func add_move_to() -> void:
-	for b in body.get_children():
-		# Don't add duplicates
-		if !b.move_to.has({"x": face.global_position.x, "y": face.global_position.y, "vel": vel}):
-			b.move_to.append({
-				"x": face.global_position.x,
-				"y": face.global_position.y,
-				"vel": vel,
-			})
-
-
 func _ready() -> void:
+	"""
+	Loads the correct face sprite based on the random colour.
+	Then sets a random position, taking the player's position into account
+	to prevent situations that the player cannot react to. (ie: enemy spawns
+	on top of player, causing them to die.)
+	After that, it sets a random length, adding the correct amount of body
+	parts while making sure not to intrude on the player's position.
+	Finally, it sets a random in-game name for the enemy. 
+	"""
+	
 	face_sprite.texture = load("res://assets/snakes/" + colour + "/face.png")
 	
 	# Set position
@@ -113,7 +112,11 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	# Check whether the player's size should be increased
+	"""
+	Increases the enemies' length when needed.
+	"""
+	
+	# Check whether the enmemies' size should be increased
 	if increase_length_counter >= 10:
 		var new_body = ENEMY_BODY.instantiate()
 		var end_body = body.get_children()[len(body.get_children())-1]
@@ -135,7 +138,11 @@ func _process(_delta) -> void:
 
 
 func _physics_process(_delta) -> void:
-	# Prevent the player from changing direction too fast
+	"""
+	Randomizes the enemies direction and changes it accordingly.
+	"""
+	
+	# Prevent the enemy from changing direction too fast
 	if !moved:
 		var chance = randi_range(1, 500)
 		
@@ -169,6 +176,11 @@ func _physics_process(_delta) -> void:
 
 
 func _on_movement_timer_timeout() -> void:
+	"""
+	Moves the enemy once MovementTimer times out unless the enemy is 'dead'
+	where it then removes the enemy, adding bits as remains.
+	"""
+	
 	if !dead:
 		# Rotate sprite on movement to prevent glitchiness
 		if vel.y < 0:
@@ -240,15 +252,44 @@ func _on_movement_timer_timeout() -> void:
 		queue_free()
 
 
-func increase_length(increase_amount) -> void:
-	increase_length_counter += increase_amount
-
-
 func _on_enemy_face_area_entered(area) -> void:
+	"""
+	Collision detection for the enemies' face.
+	"""
+	
 	if area.name == "Face" or area.name == "EnemyFace":
 		area.get_parent().call("die")
 
 
+func add_move_to() -> void:
+	"""
+	Adds an item to the move_to array for all of the body pieces.
+	"""
+	
+	for b in body.get_children():
+		# Don't add duplicates
+		if !b.move_to.has({"x": face.global_position.x, "y": face.global_position.y, "vel": vel}):
+			b.move_to.append({
+				"x": face.global_position.x,
+				"y": face.global_position.y,
+				"vel": vel,
+			})
+
+
+func increase_length(increase_amount) -> void:
+	"""
+	Called by the enemy that the player collides with.
+	Once it reaches a certain number the code in _process() increases the enemies' length.
+	"""
+	
+	increase_length_counter += increase_amount
+
+
 func die() -> void:
+	"""
+	Called by the enemy or player that this enemy collides with.
+	Changes the face_sprite to the 'dead' version.
+	"""
+	
 	face_sprite.texture = load("res://assets/snakes/" + colour + "/dead.png")
 	dead = true

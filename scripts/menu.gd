@@ -5,6 +5,12 @@ extends Node2D
 
 
 func _on_play_pressed() -> void:
+	"""
+	Sets the player's in-game name using the LineEdit Username, or a random
+	value if none is provided.
+	Then seeds Godot's randomizer and changes the scene to game.tscn.
+	"""
+	
 	# Set player name
 	if username.text == "":
 		Manager.player_name = Manager.new_name()

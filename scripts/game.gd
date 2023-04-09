@@ -32,6 +32,12 @@ var leaderboad_content = [
 
 
 func _process(_delta) -> void:
+	"""
+	Changes the progress bar based on how close the player is to growing
+	and set the number on-screen to the player's length.
+	Also, calls update_leaderboard().
+	"""
+	
 	if growth_progress_bar.value != growth_progress_bar.max_value:
 		growth_progress_bar.value = player.increase_length_counter * 10
 	else:
@@ -45,6 +51,10 @@ func _process(_delta) -> void:
 
 
 func _on_bit_timer_timeout() -> void:
+	"""
+	Creates new bits once BitTimer times out.
+	"""
+	
 	var chance = randi_range(0, 15)
 	
 	if chance == 1:
@@ -59,17 +69,33 @@ func _on_bit_timer_timeout() -> void:
 
 
 func _on_growth_progress_bar_value_changed(value) -> void:
+	"""
+	Emits particles from the progress bar if it is full.
+	"""
+	
 	if value == growth_progress_bar.max_value:
 		# Emit particles
 		growth_particles.emitting = true
 
 
 func _on_enemy_timer_timeout() -> void:
+	"""
+	Adds new enemies once EnemyTimer times out.
+	"""
+	
 	enemies.add_child(ENEMY.instantiate())
 	enemy_timer.start()
 
 
 func update_leaderboard() -> void:
+	"""
+	Updates the leaderboard.
+	It does this by removing the previous values, then looping through all
+	enemies and if the length is large enough adding them to the leaderboard.
+	Finally, it checks whether the player should be added to the leaderboard,
+	removes data past index 4 and updates the labels on-screen.
+	"""
+	
 	leaderboad_content = []  # Clear
 	
 	# Add filler data so that next code can run
