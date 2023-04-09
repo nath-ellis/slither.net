@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_s6y0d"]
 [ext_resource type="PackedScene" uid="uid://nvqsmbpp2wcd" path="res://scenes/player_body.tscn" id="3_sxusk"]
-[ext_resource type="Texture2D" uid="uid://ds7xeomx34bfi" path="res://assets/snakes/default/face.png" id="3_tu5mi"]
+[ext_resource type="Texture2D" uid="uid://dq3x7ttmjamdc" path="res://assets/snakes/default/face.png" id="3_tu5mi"]
 [ext_resource type="Theme" uid="uid://bvx2xumgym1bg" path="res://assets/username.tres" id="4_4k1wd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jepyo"]
