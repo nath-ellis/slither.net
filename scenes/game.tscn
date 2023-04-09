@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwnj5d2ellxrb"]
+[gd_scene load_steps=8 format=3 uid="uid://bwnj5d2ellxrb"]
 
 [ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="1_k3ufk"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qfu1j"]
 [ext_resource type="PackedScene" uid="uid://im0eju43g3gx" path="res://scenes/player.tscn" id="1_ypwkn"]
 [ext_resource type="PackedScene" uid="uid://cdbmix7gq0ohd" path="res://scenes/enemy.tscn" id="4_bagti"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="4_w0r5x"]
+[ext_resource type="Theme" uid="uid://bvx2xumgym1bg" path="res://assets/username.tres" id="6_jamwo"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tmvcp"]
 particle_flag_disable_z = true
@@ -137,6 +138,7 @@ offset_top = 13.0
 offset_right = -12.0
 offset_bottom = 53.0
 grow_horizontal = 0
+theme = ExtResource("6_jamwo")
 
 [node name="First" type="Label" parent="UI/Control/Leaderboard"]
 layout_direction = 3
@@ -150,33 +152,33 @@ horizontal_alignment = 1
 layout_direction = 3
 layout_mode = 0
 offset_left = 1.0
+offset_top = 25.0
+offset_right = 2.0
+offset_bottom = 70.0
+
+[node name="Third" type="Label" parent="UI/Control/Leaderboard"]
+layout_direction = 3
+layout_mode = 0
+offset_left = 1.0
 offset_top = 50.0
 offset_right = 2.0
 offset_bottom = 95.0
 
-[node name="Third" type="Label" parent="UI/Control/Leaderboard"]
+[node name="Fourth" type="Label" parent="UI/Control/Leaderboard"]
+layout_direction = 3
+layout_mode = 0
+offset_left = 1.0
+offset_top = 75.0
+offset_right = 2.0
+offset_bottom = 120.0
+
+[node name="Fifth" type="Label" parent="UI/Control/Leaderboard"]
 layout_direction = 3
 layout_mode = 0
 offset_left = 1.0
 offset_top = 100.0
 offset_right = 2.0
 offset_bottom = 145.0
-
-[node name="Fourth" type="Label" parent="UI/Control/Leaderboard"]
-layout_direction = 3
-layout_mode = 0
-offset_left = 1.0
-offset_top = 150.0
-offset_right = 2.0
-offset_bottom = 195.0
-
-[node name="Fifth" type="Label" parent="UI/Control/Leaderboard"]
-layout_direction = 3
-layout_mode = 0
-offset_left = 1.0
-offset_top = 200.0
-offset_right = 2.0
-offset_bottom = 245.0
 
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
