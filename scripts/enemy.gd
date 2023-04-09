@@ -28,6 +28,7 @@ var colour_options = [
 	"white"
 ]
 var colour = colour_options[randi() % colour_options.size()]
+var length = 2
 
 @onready var face = $EnemyFace
 @onready var face_sprite = $EnemyFace/Sprite
@@ -106,6 +107,7 @@ func _ready() -> void:
 				break
 		
 		body.add_child(new_body)
+		length += 1
 	
 	username.text = Manager.new_name()
 
@@ -128,6 +130,7 @@ func _process(_delta) -> void:
 		
 		body.add_child(new_body)
 		
+		length += 1
 		increase_length_counter -= 10
 
 
@@ -187,6 +190,9 @@ func _on_movement_timer_timeout() -> void:
 		
 		if sped_up:
 			# Decrease length when sped up
+			if length > 1:
+				length -= 1
+			
 			if lose_length_counter >= 5:
 				if body.get_child_count() > 1:
 					body.get_children()[len(body.get_children())-1].queue_free()
