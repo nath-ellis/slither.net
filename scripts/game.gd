@@ -96,11 +96,14 @@ func update_leaderboard() -> void:
 	removes data past index 4 and updates the labels on-screen.
 	"""
 	
-	leaderboad_content = []  # Clear
-	
 	# Add filler data so that next code can run
-	for e in enemies.get_children():
-		leaderboad_content.append([e.username.text, e.length])
+	leaderboad_content = [
+		["name", 1],
+		["name", 1],
+		["name", 1],
+		["name", 1],
+		["name", 1],
+	]
 	
 	# Add correct data to the leaderboad
 	for e in enemies.get_children():
