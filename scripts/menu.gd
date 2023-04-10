@@ -1,7 +1,22 @@
 extends Node2D
 
 
-@onready var username = $UI/Username
+@onready var title_screen = $UI/TitleScreen
+@onready var colour_screen = $UI/ColourScreen
+@onready var username = $UI/TitleScreen/Username
+@onready var snake_face = $UI/ColourScreen/Snake/Face
+@onready var snake_body_1 = $UI/ColourScreen/Snake/Body1
+@onready var snake_body_2 = $UI/ColourScreen/Snake/Body2
+@onready var snake_body_3 = $UI/ColourScreen/Snake/Body3
+
+
+func _on_continue_pressed() -> void:
+	"""
+	Hides the title screen and shows the colour screen.
+	"""
+	
+	title_screen.hide()
+	colour_screen.show()
 
 
 func _on_play_pressed() -> void:
@@ -19,3 +34,16 @@ func _on_play_pressed() -> void:
 	
 	randomize()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+
+func _on_colour_btn_pressed(colour) -> void:
+	"""
+	Changes the preview snake's sprites and the player's.
+	"""
+	
+	snake_face.texture = load("res://assets/snakes/" + colour + "/face.png")
+	snake_body_1.texture = load("res://assets/snakes/" + colour + "/body_2.png")
+	snake_body_2.texture = load("res://assets/snakes/" + colour + "/body_1.png")
+	snake_body_3.texture = load("res://assets/snakes/" + colour + "/body_2.png")
+	
+	Manager.player_colour = colour

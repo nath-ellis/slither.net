@@ -21,6 +21,8 @@ func _ready() -> void:
 	Changes the player's in-game name to the one chosen on menu.tscn.
 	"""
 	
+	face_sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/face.png")
+	
 	username.text = Manager.player_name
 
 
@@ -174,5 +176,5 @@ func die() -> void:
 	Changes the face_sprite to the 'dead' version.
 	"""
 	
-	face_sprite.texture = load("res://assets/snakes/default/dead.png")
+	face_sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/dead.png")
 	dead = true
