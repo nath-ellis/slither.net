@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_rff67"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="1_vkxjq"]
 [ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="2_ebxe4"]
-[ext_resource type="Texture2D" uid="uid://drmj24fkx1d0r" path="res://assets/snakes/default/face.png" id="3_7428d"]
+[ext_resource type="Texture2D" uid="uid://doldcydrsqcpf" path="res://assets/snakes/default/face.png" id="3_7428d"]
 [ext_resource type="FontFile" uid="uid://b70at7ivvsok8" path="res://assets/m6x11.ttf" id="4_sk2d3"]
-[ext_resource type="Texture2D" uid="uid://3m3kkntvlc8a" path="res://assets/snakes/default/body_1.png" id="4_twyqm"]
-[ext_resource type="Texture2D" uid="uid://b4hgio3ylqbgk" path="res://assets/snakes/default/body_2.png" id="5_rmfso"]
+[ext_resource type="Texture2D" uid="uid://cirvulplvqkj5" path="res://assets/snakes/default/body_1.png" id="4_twyqm"]
+[ext_resource type="Texture2D" uid="uid://c2ju4gfigpcrj" path="res://assets/snakes/default/body_2.png" id="5_rmfso"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kx68q"]
 font = ExtResource("4_sk2d3")
