@@ -21,15 +21,15 @@ func _ready() -> void:
 	
 	if count == 2:  # There are 2 at the start
 		if name == "PlayerBody1":
-			sprite.texture = load("res://assets/snakes/default/body_2.png")
+			sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
 			
 	else:
 		# Should alternate between sprites
 		if count % 2 == 0:
-			sprite.texture = load("res://assets/snakes/default/body_1.png")
+			sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_1.png")
 			
 		else:
-			sprite.texture = load("res://assets/snakes/default/body_2.png")
+			sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
 
 
 func _physics_process(_delta) -> void:

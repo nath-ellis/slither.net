@@ -1,10 +1,117 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnik6vogudc73"]
+[gd_scene load_steps=37 format=3 uid="uid://dnik6vogudc73"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_rff67"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="1_vkxjq"]
+[ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="2_ebxe4"]
+[ext_resource type="Texture2D" uid="uid://drmj24fkx1d0r" path="res://assets/snakes/default/face.png" id="3_7428d"]
+[ext_resource type="FontFile" uid="uid://b70at7ivvsok8" path="res://assets/m6x11.ttf" id="4_sk2d3"]
+[ext_resource type="Texture2D" uid="uid://3m3kkntvlc8a" path="res://assets/snakes/default/body_1.png" id="4_twyqm"]
+[ext_resource type="Texture2D" uid="uid://b4hgio3ylqbgk" path="res://assets/snakes/default/body_2.png" id="5_rmfso"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kx68q"]
+font = ExtResource("4_sk2d3")
+font_size = 256
+outline_size = 64
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ll2ik"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.941935, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pyq76"]
+gradient = SubResource("Gradient_ll2ik")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_osi5v"]
+colors = PackedColorArray(0, 0.443137, 1, 1, 0, 0.443137, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d7bb1"]
+gradient = SubResource("Gradient_osi5v")
+
+[sub_resource type="Gradient" id="Gradient_4r5ok"]
+colors = PackedColorArray(0, 0.443137, 1, 1, 0.803922, 0.843137, 0.0980392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fopw"]
+gradient = SubResource("Gradient_4r5ok")
+
+[sub_resource type="Gradient" id="Gradient_a6lja"]
+colors = PackedColorArray(0.0980392, 0.827451, 0.843137, 1, 0.0980392, 0.827451, 0.843137, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqjt6"]
+gradient = SubResource("Gradient_a6lja")
+
+[sub_resource type="Gradient" id="Gradient_jfs3d"]
+colors = PackedColorArray(0, 1, 0.0941176, 1, 0, 1, 0.0941176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_53stx"]
+gradient = SubResource("Gradient_jfs3d")
+
+[sub_resource type="Gradient" id="Gradient_otvgt"]
+colors = PackedColorArray(0, 1, 0.0941176, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2gfw"]
+gradient = SubResource("Gradient_otvgt")
+
+[sub_resource type="Gradient" id="Gradient_nqfh6"]
+colors = PackedColorArray(0, 1, 0.0941176, 1, 0.941176, 0.176471, 0.490196, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vvmnx"]
+gradient = SubResource("Gradient_nqfh6")
+
+[sub_resource type="Gradient" id="Gradient_wj76m"]
+colors = PackedColorArray(0.521569, 0.521569, 0.521569, 1, 0.521569, 0.521569, 0.521569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_leiky"]
+gradient = SubResource("Gradient_wj76m")
+
+[sub_resource type="Gradient" id="Gradient_jb3n1"]
+colors = PackedColorArray(0.454902, 0.0980392, 0.843137, 1, 0.454902, 0.0980392, 0.843137, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_alc30"]
+gradient = SubResource("Gradient_jb3n1")
+
+[sub_resource type="Gradient" id="Gradient_g5aot"]
+colors = PackedColorArray(0.843137, 0.207843, 0.0980392, 1, 0.843137, 0.207843, 0.0980392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jihji"]
+gradient = SubResource("Gradient_g5aot")
+
+[sub_resource type="Gradient" id="Gradient_vbsx5"]
+colors = PackedColorArray(0.843137, 0.207843, 0.0980392, 1, 0.843137, 0.639216, 0.0980392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lkfnn"]
+gradient = SubResource("Gradient_vbsx5")
+
+[sub_resource type="Gradient" id="Gradient_5hf1h"]
+colors = PackedColorArray(0.843137, 0.207843, 0.0980392, 1, 0.803922, 0.843137, 0.0980392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6u1h3"]
+gradient = SubResource("Gradient_5hf1h")
+
+[sub_resource type="Gradient" id="Gradient_v2sqh"]
+colors = PackedColorArray(0, 1, 0.572549, 1, 0, 1, 0.572549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_scl6m"]
+gradient = SubResource("Gradient_v2sqh")
+
+[sub_resource type="Gradient" id="Gradient_4ptbi"]
+offsets = PackedFloat32Array(0.00645161, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dfgj6"]
+gradient = SubResource("Gradient_4ptbi")
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_rff67")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(640, 360)
+texture = ExtResource("2_ebxe4")
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 720)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -15,7 +122,202 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_vkxjq")
 
-[node name="Play" type="Button" parent="UI"]
+[node name="TitleScreen" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Title" type="Label" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = -255.5
+offset_right = 520.0
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Slither.net"
+label_settings = SubResource("LabelSettings_kx68q")
+
+[node name="Username" type="LineEdit" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -6.0
+offset_right = 247.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter Username"
+alignment = 1
+max_length = 16
+
+[node name="Continue" type="Button" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 103.0
+offset_right = 112.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[node name="ColourScreen" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Snake" type="Node2D" parent="UI/ColourScreen"]
+position = Vector2(736, 96)
+
+[node name="Face" type="Sprite2D" parent="UI/ColourScreen/Snake"]
+rotation = 1.5708
+texture = ExtResource("3_7428d")
+
+[node name="Body1" type="Sprite2D" parent="UI/ColourScreen/Snake"]
+position = Vector2(-64, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body2" type="Sprite2D" parent="UI/ColourScreen/Snake"]
+position = Vector2(-128, 0)
+texture = ExtResource("5_rmfso")
+
+[node name="Body3" type="Sprite2D" parent="UI/ColourScreen/Snake"]
+position = Vector2(-192, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Colours" type="Control" parent="UI/ColourScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -187.0
+offset_right = 320.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Black" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+icon = SubResource("GradientTexture2D_pyq76")
+
+[node name="Blue" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 109.0
+offset_right = 189.0
+offset_bottom = 80.0
+icon = SubResource("GradientTexture2D_d7bb1")
+
+[node name="BlueAndYellow" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 217.0
+offset_right = 297.0
+offset_bottom = 80.0
+icon = SubResource("GradientTexture2D_1fopw")
+
+[node name="Cyan" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 325.0
+offset_right = 405.0
+offset_bottom = 80.0
+icon = SubResource("GradientTexture2D_gqjt6")
+
+[node name="Default" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 433.0
+offset_right = 513.0
+offset_bottom = 80.0
+icon = SubResource("GradientTexture2D_53stx")
+
+[node name="GreenAndBlack" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 540.0
+offset_right = 620.0
+offset_bottom = 80.0
+icon = SubResource("GradientTexture2D_e2gfw")
+
+[node name="GreenAndPink" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_top = 108.0
+offset_right = 80.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_vvmnx")
+
+[node name="Grey" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 108.0
+offset_right = 189.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_leiky")
+
+[node name="Purple" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 108.0
+offset_right = 297.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_alc30")
+
+[node name="Red" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 108.0
+offset_right = 405.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_jihji")
+
+[node name="RedAndOrange" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 108.0
+offset_right = 513.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_lkfnn")
+
+[node name="RedAndYellow" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 108.0
+offset_right = 620.0
+offset_bottom = 188.0
+icon = SubResource("GradientTexture2D_6u1h3")
+
+[node name="Teal" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_top = 215.0
+offset_right = 80.0
+offset_bottom = 295.0
+icon = SubResource("GradientTexture2D_scl6m")
+
+[node name="White" type="Button" parent="UI/ColourScreen/Colours"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 215.0
+offset_right = 189.0
+offset_bottom = 295.0
+icon = SubResource("GradientTexture2D_dfgj6")
+
+[node name="Play" type="Button" parent="UI/ColourScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,29 +325,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -56.0
-offset_top = -36.0
+offset_top = 149.0
 offset_right = 56.0
-offset_bottom = 36.0
+offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
-[node name="Username" type="LineEdit" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -168.5
-offset_top = -134.0
-offset_right = 168.5
-offset_bottom = -76.0
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "Enter Username"
-alignment = 1
-max_length = 16
-expand_to_text_length = true
-
-[connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/TitleScreen/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Black" to="." method="_on_colour_btn_pressed" binds= [&"black"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Blue" to="." method="_on_colour_btn_pressed" binds= [&"blue"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/BlueAndYellow" to="." method="_on_colour_btn_pressed" binds= [&"blueandyellow"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Cyan" to="." method="_on_colour_btn_pressed" binds= [&"cyan"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Default" to="." method="_on_colour_btn_pressed" binds= [&"default"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/GreenAndBlack" to="." method="_on_colour_btn_pressed" binds= [&"greenandblack"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/GreenAndPink" to="." method="_on_colour_btn_pressed" binds= [&"greenandpink"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Grey" to="." method="_on_colour_btn_pressed" binds= [&"grey"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Purple" to="." method="_on_colour_btn_pressed" binds= [&"purple"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Red" to="." method="_on_colour_btn_pressed" binds= [&"red"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/RedAndOrange" to="." method="_on_colour_btn_pressed" binds= [&"redandorange"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/RedAndYellow" to="." method="_on_colour_btn_pressed" binds= [&"redandyellow"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/Teal" to="." method="_on_colour_btn_pressed" binds= [&"teal"]]
+[connection signal="pressed" from="UI/ColourScreen/Colours/White" to="." method="_on_colour_btn_pressed" binds= [&"white"]]
+[connection signal="pressed" from="UI/ColourScreen/Play" to="." method="_on_play_pressed"]
