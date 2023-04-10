@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_qf5hh"]
 [ext_resource type="PackedScene" uid="uid://dc8phjp33tcab" path="res://scenes/enemy_body.tscn" id="2_2fqoj"]
-[ext_resource type="Texture2D" uid="uid://dq3x7ttmjamdc" path="res://assets/snakes/default/face.png" id="3_c6wap"]
+[ext_resource type="Texture2D" uid="uid://drmj24fkx1d0r" path="res://assets/snakes/default/face.png" id="3_5g12m"]
 [ext_resource type="Theme" uid="uid://bvx2xumgym1bg" path="res://assets/username.tres" id="4_ah28x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je5be"]
@@ -22,7 +22,7 @@ position = Vector2(-128, 0)
 [node name="EnemyFace" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="EnemyFace"]
-texture = ExtResource("3_c6wap")
+texture = ExtResource("3_5g12m")
 
 [node name="Hitbox" type="CollisionShape2D" parent="EnemyFace"]
 shape = SubResource("RectangleShape2D_je5be")
