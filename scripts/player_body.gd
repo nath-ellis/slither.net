@@ -22,6 +22,8 @@ func _ready() -> void:
 	if count == 2:  # There are 2 at the start
 		if name == "PlayerBody1":
 			sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
+		else:
+			sprite.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_1.png")
 			
 	else:
 		# Should alternate between sprites
