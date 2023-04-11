@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6lr75byy1w7f"]
+[gd_scene load_steps=6 format=3 uid="uid://c6lr75byy1w7f"]
 
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="1_5iuo1"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_dmjnf"]
+[ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="2_23hln"]
+[ext_resource type="Texture2D" uid="uid://bliblf658m3ob" path="res://assets/snakes/default/dead.png" id="4_xitkp"]
+[ext_resource type="Texture2D" uid="uid://cirvulplvqkj5" path="res://assets/snakes/default/body_1.png" id="5_n5qo6"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_dmjnf")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(640, 360)
+texture = ExtResource("2_23hln")
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 720)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -12,6 +22,21 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 theme = ExtResource("1_5iuo1")
+
+[node name="Length" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -287.5
+offset_right = 192.0
+offset_bottom = -242.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your length was: "
 
 [node name="PlayAgain" type="Button" parent="UI"]
 layout_mode = 1
@@ -28,4 +53,31 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again"
 
+[node name="Menu" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 75.0
+offset_right = 68.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+
+[node name="Snake" type="Node2D" parent="UI"]
+position = Vector2(673, 224)
+
+[node name="Face" type="Sprite2D" parent="UI/Snake"]
+rotation = 1.5708
+texture = ExtResource("4_xitkp")
+
+[node name="Body1" type="Sprite2D" parent="UI/Snake"]
+position = Vector2(-64, 0)
+texture = ExtResource("5_n5qo6")
+
 [connection signal="pressed" from="UI/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="UI/Menu" to="." method="_on_menu_pressed"]
