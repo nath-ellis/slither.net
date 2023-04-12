@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwnj5d2ellxrb"]
+[gd_scene load_steps=16 format=3 uid="uid://bwnj5d2ellxrb"]
 
 [ext_resource type="Texture2D" uid="uid://cejsfrfj2lomm" path="res://assets/bg.png" id="1_k3ufk"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qfu1j"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cdbmix7gq0ohd" path="res://scenes/enemy.tscn" id="4_bagti"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="4_w0r5x"]
 [ext_resource type="Theme" uid="uid://bvx2xumgym1bg" path="res://assets/username.tres" id="6_jamwo"]
+[ext_resource type="Texture2D" uid="uid://ce6dk3xpofjal" path="res://assets/arrows/white/up.png" id="7_1im3h"]
+[ext_resource type="Texture2D" uid="uid://laqyde22b4ib" path="res://assets/arrows/black/up.png" id="8_o6mpq"]
+[ext_resource type="Texture2D" uid="uid://chsnlrmh24iwh" path="res://assets/arrows/white/down.png" id="9_8nut0"]
+[ext_resource type="Texture2D" uid="uid://c1v8h2e73cc76" path="res://assets/arrows/black/down.png" id="10_bum4u"]
+[ext_resource type="Texture2D" uid="uid://bb1t2rihdxphv" path="res://assets/arrows/white/left.png" id="11_12nqc"]
+[ext_resource type="Texture2D" uid="uid://fdkk4j0ppixi" path="res://assets/arrows/black/left.png" id="12_nm6wa"]
+[ext_resource type="Texture2D" uid="uid://c40oug5fuy026" path="res://assets/arrows/white/right.png" id="13_5cq4s"]
+[ext_resource type="Texture2D" uid="uid://cebpuwg8w55oi" path="res://assets/arrows/black/right.png" id="14_iskxd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tmvcp"]
 particle_flag_disable_z = true
@@ -180,6 +188,52 @@ offset_top = 100.0
 offset_right = 2.0
 offset_bottom = 145.0
 
+[node name="TouchControls" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 719.0
+
+[node name="Up" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(110, 441)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("7_1im3h")
+texture_pressed = ExtResource("8_o6mpq")
+action = "up"
+visibility_mode = 1
+
+[node name="SpeedUp" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(1142, 563)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("7_1im3h")
+texture_pressed = ExtResource("8_o6mpq")
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(110, 612)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("9_8nut0")
+texture_pressed = ExtResource("10_bum4u")
+action = "down"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(10, 535)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("11_12nqc")
+texture_pressed = ExtResource("12_nm6wa")
+action = "left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(194, 535)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("13_5cq4s")
+texture_pressed = ExtResource("14_iskxd")
+action = "right"
+visibility_mode = 1
+
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="value_changed" from="UI/Control/GrowthProgressBar" to="." method="_on_growth_progress_bar_value_changed"]
+[connection signal="pressed" from="UI/Control/TouchControls/SpeedUp" to="Player" method="_on_speed_up_pressed"]
+[connection signal="released" from="UI/Control/TouchControls/SpeedUp" to="Player" method="_on_speed_up_released"]
