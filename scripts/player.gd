@@ -86,6 +86,24 @@ func _physics_process(_delta) -> void:
 		sped_up = false
 
 
+func _on_speed_up_pressed():
+	"""
+	When the TouchScreenButton is pressed.
+	"""
+	
+	if !sped_up and body.get_child_count() > 1:
+		sped_up = true
+
+
+func _on_speed_up_released():
+	"""
+	When the TouchScreenButton is released.
+	"""
+	
+	if sped_up:
+		sped_up = false
+
+
 func _on_movement_timer_timeout() -> void:
 	"""
 	Moves the player once MovementTimer times out unless the player is 'dead'
