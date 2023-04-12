@@ -175,6 +175,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Continue"
 
+[node name="Highscore" type="Label" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -60.0
+offset_right = 215.0
+offset_bottom = -15.0
+grow_vertical = 0
+text = "Highscore: "
+
 [node name="ColourScreen" type="Control" parent="UI"]
 visible = false
 anchors_preset = 0

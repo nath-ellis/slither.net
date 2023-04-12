@@ -8,6 +8,24 @@ extends Node2D
 @onready var snake_body_1 = $UI/ColourScreen/Snake/Body1
 @onready var snake_body_2 = $UI/ColourScreen/Snake/Body2
 @onready var snake_body_3 = $UI/ColourScreen/Snake/Body3
+@onready var highscore = $UI/TitleScreen/Highscore
+
+
+func _ready() -> void:
+	"""
+	Calls Manager.load_data() and sets the text in the LineEdit to the username
+	from the saved data, then sets the snake's sprites.
+	"""
+	
+	Manager.load_data()
+	username.text = Manager.saved_data["username"]
+	highscore.text += str(Manager.saved_data["highscore"])
+	
+	# Load correct sprites
+	snake_face.texture = load("res://assets/snakes/" + Manager.player_colour + "/face.png")
+	snake_body_1.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
+	snake_body_2.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_1.png")
+	snake_body_3.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
 
 
 func _on_continue_pressed() -> void:

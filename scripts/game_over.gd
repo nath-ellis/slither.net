@@ -11,6 +11,7 @@ func _ready() -> void:
 	"""
 	Adds the length that the player reached to the label.
 	Then changes sprites and length of the snake.
+	Finally, calls Manager.save_data().
 	"""
 	
 	length_label.text += str(Manager.length)
@@ -37,6 +38,8 @@ func _ready() -> void:
 		new_body.position.x -= 64
 		
 		snake.add_child(new_body)
+	
+	Manager.save_data()
 
 
 func _on_play_again_pressed() -> void:
