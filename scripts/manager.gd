@@ -1,12 +1,14 @@
 extends Node
 
 
+const SAVED_DATA_PATH = "user://slithernet.json"
+
 var player_name = ""
 var player_colour = "default"
 var player_speed = 64
 var player_vel = Vector2(player_speed, 0)
 var player_pos = Vector2()
-var length = 2
+var length = 0
 var nouns = [
 	'Ability',
 	'Access',
@@ -927,6 +929,11 @@ var adjectives = [
 	'substantial',
 	'thousandsof',
 ]
+var saved_data = {
+	"username": player_name,
+	"highscore": 0,
+	"colour": "default",
+}
 
 
 func new_name() -> String:
@@ -952,3 +959,43 @@ func new_name() -> String:
 			return word_1
 		_:
 			return word_2
+
+
+func save_data() -> void:
+	"""
+	Saves data as JSON at SAVED_DATA_PATH.
+	"""
+	
+	saved_data = {
+		"username": player_name,
+		"highscore": length if length > saved_data["highscore"] else saved_data["highscore"],
+		"colour": player_colour,
+	}
+	
+	var json = JSON.stringify(saved_data)
+	var file = FileAccess.open(SAVED_DATA_PATH, FileAccess.WRITE)
+	
+	file.store_line(json)
+
+
+func load_data() -> void:
+	"""
+	Loads data from SAVED_DATA_PATH or creates it if there is none.
+	"""
+	
+	if not FileAccess.file_exists(SAVED_DATA_PATH):
+		save_data()  # Create data if none exists
+		return
+	
+	var file = FileAccess.open(SAVED_DATA_PATH, FileAccess.READ)
+	var json = JSON.new()
+	var result = json.parse(file.get_as_text())
+	
+	# Error parsing
+	if result != OK:
+		save_data()
+		return
+	
+	saved_data = json.get_data()
+	player_name = saved_data["username"]
+	player_colour = saved_data["colour"]

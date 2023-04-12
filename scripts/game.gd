@@ -31,6 +31,15 @@ var leaderboad_content = [
 ]
 
 
+func _ready() -> void:
+	"""
+	Calls Manager.save_data().
+	"""
+	
+	Manager.length = 2
+	Manager.save_data()
+
+
 func _process(_delta) -> void:
 	"""
 	Changes the progress bar based on how close the player is to growing
