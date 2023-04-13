@@ -15,7 +15,8 @@ extends Node2D
 func _ready() -> void:
 	"""
 	Calls Manager.load_data() and sets the text in the LineEdit to the username
-	from the saved data, then sets the snake's sprites.
+	from the saved data, then sets the snake's sprites and shows touchscreen
+	controls if needed.
 	"""
 	
 	Manager.load_data()

@@ -34,7 +34,7 @@ var leaderboad_content = [
 
 func _ready() -> void:
 	"""
-	Calls Manager.save_data().
+	Calls Manager.save_data() and shows touchscreen controls if needed.
 	"""
 	
 	Manager.length = 2
