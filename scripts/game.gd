@@ -29,6 +29,7 @@ var leaderboad_content = [
 	$UI/Control/Leaderboard/Fourth,
 	$UI/Control/Leaderboard/Fifth,
 ]
+@onready var touch_controls = $UI/Control/TouchControls
 
 
 func _ready() -> void:
@@ -38,6 +39,10 @@ func _ready() -> void:
 	
 	Manager.length = 2
 	Manager.save_data()
+	
+	if Manager.show_touchscreen_controls:
+		for t in touch_controls.get_children():
+			t.show()
 
 
 func _process(_delta) -> void:

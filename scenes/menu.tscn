@@ -187,6 +187,14 @@ offset_bottom = -15.0
 grow_vertical = 0
 text = "Highscore: "
 
+[node name="ShowTouchControls" type="CheckButton" parent="UI/TitleScreen"]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 658.0
+offset_right = 1259.0
+offset_bottom = 702.0
+text = "Show touch controls "
+
 [node name="ColourScreen" type="Control" parent="UI"]
 visible = false
 anchors_preset = 0
@@ -345,6 +353,7 @@ grow_vertical = 2
 text = "Play"
 
 [connection signal="pressed" from="UI/TitleScreen/Continue" to="." method="_on_continue_pressed"]
+[connection signal="toggled" from="UI/TitleScreen/ShowTouchControls" to="." method="_on_show_touch_controls_toggled"]
 [connection signal="pressed" from="UI/ColourScreen/Colours/Black" to="." method="_on_colour_btn_pressed" binds= [&"black"]]
 [connection signal="pressed" from="UI/ColourScreen/Colours/Blue" to="." method="_on_colour_btn_pressed" binds= [&"blue"]]
 [connection signal="pressed" from="UI/ColourScreen/Colours/BlueAndYellow" to="." method="_on_colour_btn_pressed" binds= [&"blueandyellow"]]

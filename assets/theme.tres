@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://csw4cm7wa6hw7"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://csw4cm7wa6hw7"]
 
 [ext_resource type="FontFile" uid="uid://b70at7ivvsok8" path="res://assets/m6x11.ttf" id="1_48q5e"]
 
@@ -67,7 +67,23 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feucn"]
-bg_color = Color(0.0080129, 0.477526, 0.405857, 1)
+bg_color = Color(0.00784314, 0.478431, 0.403922, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbcyw"]
+bg_color = Color(0.00784314, 0.478431, 0.403922, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -148,6 +164,9 @@ Button/styles/focus = SubResource("StyleBoxFlat_obemk")
 Button/styles/hover = SubResource("StyleBoxFlat_jqkh7")
 Button/styles/normal = SubResource("StyleBoxFlat_lqiom")
 Button/styles/pressed = SubResource("StyleBoxFlat_feucn")
+CheckButton/constants/outline_size = 8
+CheckButton/font_sizes/font_size = 32
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_tbcyw")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 12
 Label/font_sizes/font_size = 48
