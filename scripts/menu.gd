@@ -9,6 +9,7 @@ extends Node2D
 @onready var snake_body_2 = $UI/ColourScreen/Snake/Body2
 @onready var snake_body_3 = $UI/ColourScreen/Snake/Body3
 @onready var highscore = $UI/TitleScreen/Highscore
+@onready var show_touch_controls_btn = $UI/TitleScreen/ShowTouchControls
 
 
 func _ready() -> void:
@@ -26,6 +27,10 @@ func _ready() -> void:
 	snake_body_1.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
 	snake_body_2.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_1.png")
 	snake_body_3.texture = load("res://assets/snakes/" + Manager.player_colour + "/body_2.png")
+	
+	# Enable toggle
+	if Manager.show_touchscreen_controls:
+		show_touch_controls_btn.button_pressed = true
 
 
 func _on_continue_pressed() -> void:
@@ -65,3 +70,7 @@ func _on_colour_btn_pressed(colour) -> void:
 	snake_body_3.texture = load("res://assets/snakes/" + colour + "/body_2.png")
 	
 	Manager.player_colour = colour
+
+
+func _on_show_touch_controls_toggled(button_pressed) -> void:
+	Manager.show_touchscreen_controls = button_pressed

@@ -933,7 +933,9 @@ var saved_data = {
 	"username": player_name,
 	"highscore": 0,
 	"colour": "default",
+	"touchscreen": false,
 }
+var show_touchscreen_controls = true if OS.get_name() == "Android" or OS.get_name() == "iOS" else false
 
 
 func new_name() -> String:
@@ -970,6 +972,7 @@ func save_data() -> void:
 		"username": player_name,
 		"highscore": length if length > saved_data["highscore"] else saved_data["highscore"],
 		"colour": player_colour,
+		"touchscreen": show_touchscreen_controls,
 	}
 	
 	var json = JSON.stringify(saved_data)
@@ -999,3 +1002,4 @@ func load_data() -> void:
 	saved_data = json.get_data()
 	player_name = saved_data["username"]
 	player_colour = saved_data["colour"]
+	show_touchscreen_controls = saved_data["touchscreen"]
