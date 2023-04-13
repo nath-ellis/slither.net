@@ -65,7 +65,7 @@ func _on_area_entered(area) -> void:
 	
 	if area.get_parent().has_method("increase_length"):
 		if get_meta("size") == "large":
-			area.get_parent().call_deferred("increase_length", 10)
+			area.get_parent().call_deferred("increase_length", 5)
 			
 		elif get_meta("size") == "small":
 			area.get_parent().call_deferred("increase_length", 2)
