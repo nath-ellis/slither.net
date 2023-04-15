@@ -1,6 +1,7 @@
 extends Node2D
 
 
+@onready var ui = $UI
 @onready var title_screen = $UI/TitleScreen
 @onready var colour_screen = $UI/ColourScreen
 @onready var username = $UI/TitleScreen/Username
@@ -36,6 +37,18 @@ func _ready() -> void:
 	# Hide toggle on phones as the touch controls are necessary
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		show_touch_controls_btn.hide()
+
+
+func _process(_delta) -> void:
+	"""
+	Moves the UI to above the virtual keyboard if needed.
+	"""
+	
+	if DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
+		if DisplayServer.virtual_keyboard_get_height() != 0:
+			ui.position.y = -150
+		else:
+			ui.position.y = 0
 
 
 func _on_continue_pressed() -> void:
