@@ -72,7 +72,7 @@ text = "Menu"
 position = Vector2(673, 224)
 
 [node name="Face" type="Sprite2D" parent="UI/Snake"]
-rotation = 1.5708
+rotation = 4.71239
 texture = ExtResource("4_xitkp")
 
 [node name="Body1" type="Sprite2D" parent="UI/Snake"]
