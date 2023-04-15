@@ -113,16 +113,16 @@ func _on_movement_timer_timeout() -> void:
 	if !dead:
 		# Rotate sprite on movement to prevent glitchiness
 		if Manager.player_vel.y < 0:
-			face_sprite.rotation_degrees = 0
-			
-		elif Manager.player_vel.y > 0:
 			face_sprite.rotation_degrees = 180
 			
+		elif Manager.player_vel.y > 0:
+			face_sprite.rotation_degrees = 0
+			
 		elif Manager.player_vel.x < 0:
-			face_sprite.rotation_degrees = 270
+			face_sprite.rotation_degrees = 90
 			
 		elif Manager.player_vel.x > 0:
-			face_sprite.rotation_degrees = 90
+			face_sprite.rotation_degrees = 270
 		
 		face.global_position = face.global_position + Manager.player_vel
 		Manager.player_pos = face.global_position

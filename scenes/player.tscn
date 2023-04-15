@@ -22,6 +22,7 @@ position = Vector2(-128, 0)
 [node name="Face" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="Face"]
+rotation = 4.71239
 texture = ExtResource("3_8fxwj")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Face"]
