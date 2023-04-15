@@ -32,6 +32,10 @@ func _ready() -> void:
 	# Enable toggle
 	if Manager.show_touchscreen_controls:
 		show_touch_controls_btn.button_pressed = true
+	
+	# Hide toggle on phones as the touch controls are necessary
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		show_touch_controls_btn.hide()
 
 
 func _on_continue_pressed() -> void:
