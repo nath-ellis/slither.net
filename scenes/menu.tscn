@@ -140,7 +140,7 @@ offset_right = 520.0
 offset_bottom = -28.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Slither.net"
+text = "slither.net"
 label_settings = SubResource("LabelSettings_kx68q")
 
 [node name="Username" type="LineEdit" parent="UI/TitleScreen"]
