@@ -57,7 +57,7 @@ func _process(_delta) -> void:
 	
 	if DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
 		if DisplayServer.virtual_keyboard_get_height() != 0:
-			ui.position.y = -150
+			ui.position.y = -200
 		else:
 			ui.position.y = 0
 
