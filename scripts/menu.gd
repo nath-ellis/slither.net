@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var ui = $UI
+@onready var how_to_play = $UI/HowToPlay
 @onready var title_screen = $UI/TitleScreen
 @onready var colour_screen = $UI/ColourScreen
 @onready var username = $UI/TitleScreen/Username
@@ -16,13 +17,18 @@ extends Node2D
 func _ready() -> void:
 	"""
 	Calls Manager.load_data() and sets the text in the LineEdit to the username
-	from the saved data, then sets the snake's sprites and shows touchscreen
-	controls if needed.
+	from the saved data, then shows the HowToPlay menu if needed, then sets the 
+	snake's sprites and shows touchscreen controls if needed, hiding the toggle 
+	on phones.
 	"""
 	
 	Manager.load_data()
 	username.text = Manager.saved_data["username"]
 	highscore.text += str(Manager.saved_data["highscore"])
+	
+	if Manager.show_how_to_play:
+		title_screen.hide()
+		how_to_play.show()
 	
 	# Load correct sprites
 	snake_face.texture = load("res://assets/snakes/" + Manager.player_colour + "/face.png")
@@ -91,4 +97,17 @@ func _on_colour_btn_pressed(colour) -> void:
 
 
 func _on_show_touch_controls_toggled(button_pressed) -> void:
+	"""
+	Enables/disables touch controls
+	"""
+	
 	Manager.show_touchscreen_controls = button_pressed
+
+
+func _on_done_how_to_play_pressed() -> void:
+	"""
+	Changes from HowToPlay to the TitleScreen
+	"""
+	
+	how_to_play.hide()
+	title_screen.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dnik6vogudc73"]
+[gd_scene load_steps=46 format=3 uid="uid://dnik6vogudc73"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_rff67"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="1_vkxjq"]
@@ -7,6 +7,15 @@
 [ext_resource type="FontFile" uid="uid://b70at7ivvsok8" path="res://assets/m6x11.ttf" id="4_sk2d3"]
 [ext_resource type="Texture2D" uid="uid://cirvulplvqkj5" path="res://assets/snakes/default/body_1.png" id="4_twyqm"]
 [ext_resource type="Texture2D" uid="uid://c2ju4gfigpcrj" path="res://assets/snakes/default/body_2.png" id="5_rmfso"]
+[ext_resource type="Texture2D" uid="uid://llbcxf6mix3r" path="res://assets/bits/blue.png" id="7_het5a"]
+[ext_resource type="Texture2D" uid="uid://cjubr2y7bmwdo" path="res://assets/bits/yellow.png" id="8_2qp4c"]
+[ext_resource type="Texture2D" uid="uid://wtp3870xmldm" path="res://assets/bits/orange.png" id="9_nfwgr"]
+[ext_resource type="Texture2D" uid="uid://c6gpn2edcq7sn" path="res://assets/bits/lime.png" id="10_643qi"]
+[ext_resource type="Texture2D" uid="uid://bhnwttyjsuoba" path="res://assets/bits/large_white.png" id="11_ejege"]
+[ext_resource type="Texture2D" uid="uid://yiltxas5lyns" path="res://assets/bits/large_light_blue.png" id="12_l1qci"]
+[ext_resource type="Texture2D" uid="uid://cejturjwfbr6t" path="res://assets/snakes/red/dead.png" id="13_jtat0"]
+[ext_resource type="Texture2D" uid="uid://r3pygagfg0ri" path="res://assets/snakes/red/body_1.png" id="14_76uyb"]
+[ext_resource type="Texture2D" uid="uid://bliblf658m3ob" path="res://assets/snakes/default/dead.png" id="15_maqrv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kx68q"]
 font = ExtResource("4_sk2d3")
@@ -121,6 +130,198 @@ offset_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_vkxjq")
+
+[node name="HowToPlay" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Top" type="Control" parent="UI/HowToPlay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EatToGrow" type="Label" parent="UI/HowToPlay/Top"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 73.0
+offset_right = 304.0
+offset_bottom = 118.0
+text = "Eat to grow:"
+
+[node name="Snake" type="Node2D" parent="UI/HowToPlay/Top"]
+position = Vector2(288, 160)
+
+[node name="Face" type="Sprite2D" parent="UI/HowToPlay/Top/Snake"]
+rotation = 4.71239
+texture = ExtResource("3_7428d")
+
+[node name="Body1" type="Sprite2D" parent="UI/HowToPlay/Top/Snake"]
+position = Vector2(-64, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body2" type="Sprite2D" parent="UI/HowToPlay/Top/Snake"]
+position = Vector2(-128, 0)
+texture = ExtResource("5_rmfso")
+
+[node name="Body3" type="Sprite2D" parent="UI/HowToPlay/Top/Snake"]
+position = Vector2(-192, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Bits" type="Node2D" parent="UI/HowToPlay/Top"]
+
+[node name="Bit1" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(425, 151)
+texture = ExtResource("7_het5a")
+
+[node name="Bit2" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(566, 176)
+texture = ExtResource("8_2qp4c")
+
+[node name="Bit3" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(747, 166)
+texture = ExtResource("9_nfwgr")
+
+[node name="Bit4" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(872, 152)
+texture = ExtResource("7_het5a")
+
+[node name="Bit5" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(947, 176)
+texture = ExtResource("10_643qi")
+
+[node name="LargeBit1" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(659, 163)
+texture = ExtResource("11_ejege")
+
+[node name="LargeBit2" type="Sprite2D" parent="UI/HowToPlay/Top/Bits"]
+position = Vector2(1050, 155)
+texture = ExtResource("12_l1qci")
+
+[node name="Middle" type="Control" parent="UI/HowToPlay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Kill" type="Label" parent="UI/HowToPlay/Middle"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 262.0
+offset_right = 119.0
+offset_bottom = 307.0
+text = "Kill Opponents:"
+
+[node name="Snake1" type="Node2D" parent="UI/HowToPlay/Middle"]
+position = Vector2(416, 352)
+
+[node name="Face" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+rotation = 4.71239
+texture = ExtResource("3_7428d")
+
+[node name="Body1" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+position = Vector2(-64, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body2" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+position = Vector2(-128, 0)
+texture = ExtResource("5_rmfso")
+
+[node name="Body3" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+position = Vector2(-192, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body4" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+position = Vector2(-256, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body5" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake1"]
+position = Vector2(-320, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Snake2" type="Node2D" parent="UI/HowToPlay/Middle"]
+position = Vector2(288, 483)
+
+[node name="Face" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake2"]
+position = Vector2(-64.0001, -131)
+rotation = 3.14159
+texture = ExtResource("13_jtat0")
+
+[node name="Body1" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake2"]
+position = Vector2(-64, -67)
+texture = ExtResource("14_76uyb")
+
+[node name="Body2" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake2"]
+position = Vector2(-64, -3)
+texture = ExtResource("14_76uyb")
+
+[node name="Survive" type="Label" parent="UI/HowToPlay/Middle"]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 264.0
+offset_right = 989.0
+offset_bottom = 309.0
+text = "Try to survive:"
+
+[node name="Snake3" type="Node2D" parent="UI/HowToPlay/Middle"]
+position = Vector2(1056, 352)
+
+[node name="Body1" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-192, 64)
+texture = ExtResource("4_twyqm")
+
+[node name="Body2" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-192, 128)
+texture = ExtResource("5_rmfso")
+
+[node name="Body3" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-128, 128)
+texture = ExtResource("4_twyqm")
+
+[node name="Body4" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-64, 128)
+texture = ExtResource("4_twyqm")
+
+[node name="Body5" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-64, 64)
+texture = ExtResource("4_twyqm")
+
+[node name="Body6" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-64, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body7" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-128, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body8" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-256, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Body9" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-320, 0)
+texture = ExtResource("4_twyqm")
+
+[node name="Face" type="Sprite2D" parent="UI/HowToPlay/Middle/Snake3"]
+position = Vector2(-192, 0)
+rotation = 3.14159
+texture = ExtResource("15_maqrv")
+
+[node name="Done" type="Button" parent="UI/HowToPlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 209.0
+offset_right = 64.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Done
+"
 
 [node name="TitleScreen" type="Control" parent="UI"]
 anchors_preset = 0
@@ -352,6 +553,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
+[connection signal="pressed" from="UI/HowToPlay/Done" to="." method="_on_done_how_to_play_pressed"]
 [connection signal="pressed" from="UI/TitleScreen/Continue" to="." method="_on_continue_pressed"]
 [connection signal="toggled" from="UI/TitleScreen/ShowTouchControls" to="." method="_on_show_touch_controls_toggled"]
 [connection signal="pressed" from="UI/ColourScreen/Colours/Black" to="." method="_on_colour_btn_pressed" binds= [&"black"]]
