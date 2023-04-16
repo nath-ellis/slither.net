@@ -45,7 +45,7 @@ func _ready() -> void:
 	# Resize controls
 	ui_control.size = get_viewport_rect().size
 	
-	speed_up_btn.position.x = get_viewport_rect().size.x - 138
+	speed_up_btn.position.x = get_viewport_rect().size.x - 170
 	
 	if Manager.show_touchscreen_controls:
 		for t in touch_controls.get_children():
