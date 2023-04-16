@@ -194,22 +194,13 @@ offset_right = 1280.0
 offset_bottom = 719.0
 
 [node name="Up" type="TouchScreenButton" parent="UI/Control/TouchControls"]
-visible = false
 position = Vector2(110, 441)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("7_1im3h")
 texture_pressed = ExtResource("8_o6mpq")
 action = "up"
 
-[node name="SpeedUp" type="TouchScreenButton" parent="UI/Control/TouchControls"]
-visible = false
-position = Vector2(1142, 563)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("7_1im3h")
-texture_pressed = ExtResource("8_o6mpq")
-
 [node name="Down" type="TouchScreenButton" parent="UI/Control/TouchControls"]
-visible = false
 position = Vector2(110, 612)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("9_8nut0")
@@ -217,7 +208,6 @@ texture_pressed = ExtResource("10_bum4u")
 action = "down"
 
 [node name="Left" type="TouchScreenButton" parent="UI/Control/TouchControls"]
-visible = false
 position = Vector2(10, 535)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("11_12nqc")
@@ -225,12 +215,17 @@ texture_pressed = ExtResource("12_nm6wa")
 action = "left"
 
 [node name="Right" type="TouchScreenButton" parent="UI/Control/TouchControls"]
-visible = false
 position = Vector2(194, 535)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("13_5cq4s")
 texture_pressed = ExtResource("14_iskxd")
 action = "right"
+
+[node name="SpeedUp" type="TouchScreenButton" parent="UI/Control/TouchControls"]
+position = Vector2(1142, 563)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("7_1im3h")
+texture_pressed = ExtResource("8_o6mpq")
 
 [connection signal="timeout" from="BitTimer" to="." method="_on_bit_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

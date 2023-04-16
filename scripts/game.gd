@@ -16,6 +16,7 @@ var leaderboad_content = [
 @onready var player = $Player
 @onready var bits = $Bits
 @onready var bit_timer = $BitTimer
+@onready var ui_control = $UI/Control
 @onready var growth_progress_bar = $UI/Control/GrowthProgressBar
 @onready var growth_particles = $UI/Control/GrowthParticles
 @onready var length = $UI/Control/Length
@@ -30,6 +31,7 @@ var leaderboad_content = [
 	$UI/Control/Leaderboard/Fifth,
 ]
 @onready var touch_controls = $UI/Control/TouchControls
+@onready var speed_up_btn = $UI/Control/TouchControls/SpeedUp
 
 
 func _ready() -> void:
@@ -40,10 +42,14 @@ func _ready() -> void:
 	Manager.length = 2
 	Manager.save_data()
 	
+	# Resize controls
+	ui_control.size = get_viewport_rect().size
+	
+	speed_up_btn.position.x = get_viewport_rect().size.x - 138
+	
 	if Manager.show_touchscreen_controls:
 		for t in touch_controls.get_children():
 			t.show()
-
 
 func _process(_delta) -> void:
 	"""
