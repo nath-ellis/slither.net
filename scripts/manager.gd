@@ -936,6 +936,7 @@ var saved_data = {
 	"touchscreen": false,
 }
 var show_touchscreen_controls = true if OS.get_name() == "Android" or OS.get_name() == "iOS" else false
+var show_how_to_play = true
 
 
 func new_name() -> String:
@@ -1000,6 +1001,7 @@ func load_data() -> void:
 		return
 	
 	saved_data = json.get_data()
+	show_how_to_play = false  # Don't show menu to returning player
 	player_name = saved_data["username"]
 	player_colour = saved_data["colour"]
 	show_touchscreen_controls = saved_data["touchscreen"]
