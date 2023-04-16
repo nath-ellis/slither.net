@@ -26,6 +26,11 @@ func _ready() -> void:
 	username.text = Manager.saved_data["username"]
 	highscore.text += str(Manager.saved_data["highscore"])
 	
+	# Resize controls so that UI is centred
+	how_to_play.size = get_viewport_rect().size
+	title_screen.size = get_viewport_rect().size
+	colour_screen.size = get_viewport_rect().size
+	
 	if Manager.show_how_to_play:
 		title_screen.hide()
 		how_to_play.show()

@@ -14,7 +14,7 @@ texture_repeat = 2
 position = Vector2(640, 360)
 texture = ExtResource("2_23hln")
 region_enabled = true
-region_rect = Rect2(0, 0, 1280, 720)
+region_rect = Rect2(0, 0, 12800, 720)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

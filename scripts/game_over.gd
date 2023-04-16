@@ -1,6 +1,7 @@
-extends Node
+extends Node2D
 
 
+@onready var ui = $UI
 @onready var length_label = $UI/Length
 @onready var snake = $UI/Snake
 @onready var face = $UI/Snake/Face
@@ -13,6 +14,8 @@ func _ready() -> void:
 	Then changes sprites and length of the snake.
 	Finally, calls Manager.save_data().
 	"""
+	
+	ui.size = get_viewport_rect().size
 	
 	length_label.text += str(Manager.length)
 	
@@ -29,7 +32,7 @@ func _ready() -> void:
 		if i % 2 == 0 or i == 0:
 			new_body.texture = body_1_sprite
 			
-			if snake.position.x < 1248:
+			if snake.position.x < get_viewport_rect().size.x:
 				snake.position.x += 64  # Ensures snake is centred
 		else:
 			new_body.texture = body_2_sprite
