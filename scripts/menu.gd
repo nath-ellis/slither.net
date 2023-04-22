@@ -5,6 +5,7 @@ extends Node2D
 @onready var how_to_play = $UI/HowToPlay
 @onready var title_screen = $UI/TitleScreen
 @onready var colour_screen = $UI/ColourScreen
+@onready var info = $UI/Info
 @onready var username = $UI/TitleScreen/Username
 @onready var snake = $UI/ColourScreen/Snake
 @onready var snake_face = $UI/ColourScreen/Snake/Face
@@ -31,6 +32,7 @@ func _ready() -> void:
 	how_to_play.size = get_viewport_rect().size
 	title_screen.size = get_viewport_rect().size
 	colour_screen.size = get_viewport_rect().size
+	info.size = get_viewport_rect().size
 	
 	if Manager.show_how_to_play:
 		title_screen.hide()
@@ -121,3 +123,29 @@ func _on_done_how_to_play_pressed() -> void:
 	
 	how_to_play.hide()
 	title_screen.show()
+
+
+func _on_info_pressed():
+	"""
+	Changes from TitleScreen to Info
+	"""
+	
+	title_screen.hide()
+	info.show()
+
+
+func _on_exit_pressed():
+	"""
+	Changes from Info to TitleScreen
+	"""
+	
+	info.hide()
+	title_screen.show()
+
+
+func _on_link_pressed(url):
+	"""
+	Opens web browser with URL
+	"""
+	
+	OS.shell_open(url)
