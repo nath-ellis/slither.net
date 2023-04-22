@@ -32,6 +32,10 @@ window/stretch/aspect="keep_height"
 
 project/assembly_name="Slither.net"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 up={
