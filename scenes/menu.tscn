@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dnik6vogudc73"]
+[gd_scene load_steps=48 format=3 uid="uid://dnik6vogudc73"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_rff67"]
 [ext_resource type="Theme" uid="uid://csw4cm7wa6hw7" path="res://assets/theme.tres" id="1_vkxjq"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cejturjwfbr6t" path="res://assets/snakes/red/dead.png" id="13_jtat0"]
 [ext_resource type="Texture2D" uid="uid://r3pygagfg0ri" path="res://assets/snakes/red/body_1.png" id="14_76uyb"]
 [ext_resource type="Texture2D" uid="uid://bliblf658m3ob" path="res://assets/snakes/default/dead.png" id="15_maqrv"]
+[ext_resource type="Texture2D" uid="uid://swgyg2iqo2kq" path="res://assets/info.png" id="17_g7whg"]
+[ext_resource type="Texture2D" uid="uid://cyvw4yl32wspl" path="res://assets/cross.png" id="18_701vu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kx68q"]
 font = ExtResource("4_sk2d3")
@@ -407,12 +409,24 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -346.0
+offset_left = -409.0
 offset_top = 27.0
-offset_right = -30.0
+offset_right = -93.0
 offset_bottom = 71.0
 grow_horizontal = 0
 text = "Show touch controls "
+
+[node name="Info" type="Button" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 27.0
+offset_right = -30.0
+offset_bottom = 77.0
+grow_horizontal = 0
+icon = ExtResource("17_g7whg")
 
 [node name="ColourScreen" type="Control" parent="UI"]
 visible = false
@@ -571,9 +585,118 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
+[node name="Info" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Exit" type="Button" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 27.0
+offset_right = -30.0
+offset_bottom = 77.0
+grow_horizontal = 0
+icon = ExtResource("18_701vu")
+
+[node name="Author" type="Label" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -260.5
+offset_right = 144.0
+offset_bottom = -215.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game by Nathan"
+
+[node name="Thanks" type="Label" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -173.5
+offset_right = 175.5
+offset_bottom = -128.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks For Playing!"
+
+[node name="Site" type="Button" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -86.0
+offset_right = 186.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "nathanellis.net"
+
+[node name="SourceCode" type="Button" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = 21.0
+offset_right = 186.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Source Code"
+
+[node name="Icons" type="Button" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = 138.0
+offset_right = -20.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Icons"
+
+[node name="Font" type="Button" parent="UI/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = 138.0
+offset_right = 186.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Font"
+
 [connection signal="pressed" from="UI/HowToPlay/Done" to="." method="_on_done_how_to_play_pressed"]
 [connection signal="pressed" from="UI/TitleScreen/Continue" to="." method="_on_continue_pressed"]
 [connection signal="toggled" from="UI/TitleScreen/ShowTouchControls" to="." method="_on_show_touch_controls_toggled"]
+[connection signal="pressed" from="UI/TitleScreen/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="UI/ColourScreen/Colours/Black" to="." method="_on_colour_btn_pressed" binds= [&"black"]]
 [connection signal="pressed" from="UI/ColourScreen/Colours/Blue" to="." method="_on_colour_btn_pressed" binds= [&"blue"]]
 [connection signal="pressed" from="UI/ColourScreen/Colours/BlueAndYellow" to="." method="_on_colour_btn_pressed" binds= [&"blueandyellow"]]
@@ -589,3 +712,8 @@ text = "Play"
 [connection signal="pressed" from="UI/ColourScreen/Colours/Teal" to="." method="_on_colour_btn_pressed" binds= [&"teal"]]
 [connection signal="pressed" from="UI/ColourScreen/Colours/White" to="." method="_on_colour_btn_pressed" binds= [&"white"]]
 [connection signal="pressed" from="UI/ColourScreen/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Info/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="UI/Info/Site" to="." method="_on_link_pressed" binds= [&"https://nathanellis.net"]]
+[connection signal="pressed" from="UI/Info/SourceCode" to="." method="_on_link_pressed" binds= [&"https://github.com/nath-ellis/slither.net"]]
+[connection signal="pressed" from="UI/Info/Icons" to="." method="_on_link_pressed" binds= [&"https://kenney.nl/assets/game-icons"]]
+[connection signal="pressed" from="UI/Info/Font" to="." method="_on_link_pressed" binds= [&"https://managore.itch.io/m6x11"]]
