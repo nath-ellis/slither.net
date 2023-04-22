@@ -6,6 +6,7 @@ extends Node2D
 @onready var title_screen = $UI/TitleScreen
 @onready var colour_screen = $UI/ColourScreen
 @onready var username = $UI/TitleScreen/Username
+@onready var snake = $UI/ColourScreen/Snake
 @onready var snake_face = $UI/ColourScreen/Snake/Face
 @onready var snake_body_1 = $UI/ColourScreen/Snake/Body1
 @onready var snake_body_2 = $UI/ColourScreen/Snake/Body2
@@ -48,6 +49,10 @@ func _ready() -> void:
 	# Hide toggle on phones as the touch controls are necessary
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		show_touch_controls_btn.hide()
+	
+	# Centres the snake
+	while snake.position.x < (get_viewport_rect().size.x / 2) + 64:
+		snake.position.x += 64
 
 
 func _process(_delta) -> void:
