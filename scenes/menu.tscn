@@ -693,6 +693,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Font"
 
+[node name="Version" type="Label" parent="UI/Info"]
+offset_left = 30.0
+offset_top = 23.0
+offset_right = 102.0
+offset_bottom = 68.0
+text = "v1.0"
+
 [connection signal="pressed" from="UI/HowToPlay/Done" to="." method="_on_done_how_to_play_pressed"]
 [connection signal="pressed" from="UI/TitleScreen/Continue" to="." method="_on_continue_pressed"]
 [connection signal="toggled" from="UI/TitleScreen/ShowTouchControls" to="." method="_on_show_touch_controls_toggled"]
